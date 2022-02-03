@@ -12,6 +12,7 @@
         android:layout_height="100dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/round_button"
+        android:onClick="onTap"
         android:text="@string/plus"
         android:textAlignment="center"
         android:textSize="60sp"
