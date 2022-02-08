@@ -6,17 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <ImageView
+        android:id="@+id/imgCat"
+        android:layout_width="382dp"
+        android:layout_height="393dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.183"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <Button
         android:id="@+id/btnCatSearch"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/round_button"
-        android:onClick="onTap"
         android:text="@string/plus"
         android:textAlignment="center"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
