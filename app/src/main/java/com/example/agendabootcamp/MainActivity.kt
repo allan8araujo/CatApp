@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         btnAddTodoList.setOnClickListener {
             val todoTitle=etTodoTitle.text.toString()
             if(todoTitle.isNotEmpty()){
-                val todo= Todo(todoTitle)
+                val todo= Todo(todoTitle,false)
                 todoAdapter.addTodo(todo)
                 etTodoTitle.text.clear()
             }
