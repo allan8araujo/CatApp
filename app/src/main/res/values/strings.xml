@@ -3,4 +3,5 @@
     <string name="adicionar">Adicionar</string>
     <string name="deletar">Deletar</string>
     <string name="enter_todo_title">Enter Todo Title</string>
+    <string name="atualizar">Atualizar</string>
 </resources>

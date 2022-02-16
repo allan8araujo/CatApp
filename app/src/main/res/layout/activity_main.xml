@@ -39,4 +39,15 @@
         android:text="@string/deletar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="137dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/atualizar"
+        app:layout_constraintBottom_toBottomOf="@+id/rvTodoItems"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
