@@ -1,5 +1,6 @@
 package com.example.catapp
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -26,8 +27,7 @@ class MainActivity : AppCompatActivity() {
 
             doAsync {
                 val imgCat=findViewById<ImageView>(R.id.imgCat) //vai pegar a imagem imgCat
-                val newimg=HttpHelper().get("https://cataas.com/c") //joga o link da api e chama o método
-
+                var newimg = HttpHelper().get("https://cataas.com/c") //joga o link da api e chama o método
                 uiThread {
                     progressBar.visibility=View.INVISIBLE
                     imgCat.setImageBitmap(newimg)

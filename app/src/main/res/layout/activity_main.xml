@@ -11,13 +11,14 @@
 
     <ImageView
         android:id="@+id/imgCat"
-        android:layout_width="378dp"
-        android:layout_height="487dp"
-        android:layout_marginBottom="40dp"
+        android:layout_width="374dp"
+        android:layout_height="490dp"
+        android:layout_marginBottom="44dp"
         app:layout_constraintBottom_toTopOf="@+id/btnCatSearch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
 
+        app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.appcompat.widget.AppCompatButton
