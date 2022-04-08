@@ -30,7 +30,7 @@
             android:id="@+id/pbLoading"
             style="?android:attr/progressBarStyle"
             android:layout_width="182dp"
-            android:layout_height="159dp"
+            android:layout_height="158dp"
             android:layout_centerInParent="true"
             android:fromDegrees="0"
             android:toDegrees="1080"
