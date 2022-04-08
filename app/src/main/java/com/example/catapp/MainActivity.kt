@@ -26,8 +26,7 @@ class MainActivity : AppCompatActivity() {
 
             doAsync {
                 val imgCat = findViewById<ImageView>(R.id.imgCat) //vai pegar a imagem imgCat
-                var newimg =
-                    HttpHelper().get("https://cataas.com/c") //joga o link da api e chama o método
+                var newimg = HttpHelper().get("https://cataas.com/c") //joga o link da api e chama o método
                 uiThread {
                     progressBar.visibility = View.INVISIBLE
                     imgCat.setImageBitmap(newimg)
