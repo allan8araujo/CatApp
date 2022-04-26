@@ -51,7 +51,7 @@
         android:background="@drawable/round_button"
         android:text="@string/hitme"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.catapp
 
-import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -16,10 +15,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.hide();
 
         val btnMostrarGato = findViewById<Button>(R.id.btnCatSearch)
         var progressBar = findViewById<ProgressBar>(R.id.pbLoading)
-
 
         btnMostrarGato.setOnClickListener { //seta o evento btnCLick
             progressBar.visibility = View.VISIBLE
