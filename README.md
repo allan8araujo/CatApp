@@ -15,6 +15,6 @@ Simple app to consume some a REST API avalible on https://cataas.com/#/,
 
 apk download:
   https://drive.google.com/file/d/1T81l3FI51C4LJogOcLfKcWYvmWaQykW9
-photos:
+fotos:
 
 ![appcat](https://user-images.githubusercontent.com/77680596/160214004-462e975b-c3eb-4f80-9ee3-d7c4bba76ebd.png)
