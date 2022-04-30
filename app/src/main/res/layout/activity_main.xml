@@ -35,6 +35,7 @@
             android:fromDegrees="0"
             android:toDegrees="1080"
             android:visibility="invisible"
+            android:progressDrawable="@drawable/pb_loading"
             app:layout_constraintBottom_toBottomOf="@+id/imgCat"
             app:layout_constraintEnd_toEndOf="@+id/imgCat"
             app:layout_constraintStart_toStartOf="@+id/imgCat"

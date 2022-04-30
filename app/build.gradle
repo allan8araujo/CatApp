@@ -60,7 +60,4 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.google.dagger:hilt-android-compiler:2.33-beta'
-
-    //picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
 }
