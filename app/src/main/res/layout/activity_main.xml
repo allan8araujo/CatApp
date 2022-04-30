@@ -11,20 +11,16 @@
 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
 
         <ImageView
             android:id="@+id/imgCat"
-            android:layout_width="374dp"
-            android:layout_height="490dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="15sp"
-            android:layout_marginTop="15sp"
-            android:layout_marginEnd="15sp"
-            android:layout_marginBottom="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
             tools:srcCompat="@tools:sample/avatars" />
-
 
         <ProgressBar
             android:id="@+id/pbLoading"
@@ -33,9 +29,8 @@
             android:layout_height="160dp"
             android:layout_centerInParent="true"
             android:fromDegrees="0"
-            android:toDegrees="1080"
-            android:visibility="invisible"
             android:progressDrawable="@drawable/pb_loading"
+            android:toDegrees="1080"
             app:layout_constraintBottom_toBottomOf="@+id/imgCat"
             app:layout_constraintEnd_toEndOf="@+id/imgCat"
             app:layout_constraintStart_toStartOf="@+id/imgCat"
@@ -45,9 +40,10 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="15dp"
         android:id="@+id/btnCatSearch"
-        android:layout_width="246dp"
-        android:layout_height="41dp"
+        android:layout_width="169dp"
+        android:layout_height="59dp"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
         android:text="@string/hitme"

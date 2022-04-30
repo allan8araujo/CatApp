@@ -4,8 +4,6 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.catapp.databinding.ActivityMainBinding
@@ -20,27 +18,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         biding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(biding.root)
         supportActionBar?.hide()
-        val progressBar = biding.pbLoading
 
-        progressBar.visibility=View.GONE
         biding.btnCatSearch.setOnClickListener(this)
+
     }
 
     override fun onClick(view: View) {
         if (view.id == R.id.btnCatSearch) {
-
             val progressBar = biding.pbLoading
 
             progressBar.visibility=View.VISIBLE
-
             val repository = Repository()
             val viewModelFactory = MainViewModelFactory(repository)
-            viewModel = ViewModelProvider(this, viewModelFactory)
+            viewModel =
+                ViewModelProvider(this, viewModelFactory)
                 .get(MainViewModel::class.java)
             viewModel.getImage()
+
             Glide.with(biding.root.context)
                 .load(BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream()))
                 .placeholder(R.drawable.pb_loading)
+                .centerCrop()
                 .into(biding.imgCat)
 
             progressBar.visibility=View.GONE
