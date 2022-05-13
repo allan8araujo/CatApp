@@ -14,33 +14,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val biding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-
-    val progressBar by lazy { biding.pbLoading }
-
-    private lateinit var viewModel: MainViewModel
+    private val progressBar by lazy { biding.pbLoading }
+    private val repository = Repository()
+    private val viewModelFactory = MainViewModelFactory(repository)
+    private val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)
+            .get(MainViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
         progressBar.visibility = View.INVISIBLE
         biding.btnCatSearch.setOnClickListener(this)
+
+        viewModel.myResponse.observe(this) { response ->
+            Glide.with(biding.root.context)
+                .load(BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream()))
+                .listener(LoadProgressBar(progressBar))
+                .centerCrop()
+                .into(biding.imgCat)
+        }
     }
 
     override fun onClick(view: View) {
         if (view.id == biding.btnCatSearch.id) {
-            val repository = Repository()
-            val viewModelFactory = MainViewModelFactory(repository)
-            viewModel =
-                ViewModelProvider(this, viewModelFactory)
-                    .get(MainViewModel::class.java)
+            progressBar.visibility = View.VISIBLE
             viewModel.getImage()
-
-            Glide.with(biding.root.context)
-                .load(BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream()))
-              //  .placeholder(progressBar)
-                .listener(LoadProgressBar(progressBar))
-                .centerCrop()
-                .into(biding.imgCat)
         }
     }
 }
