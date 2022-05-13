@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.myResponse.observe(this) { response ->
             Glide.with(biding.root.context)
                 .load(BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream()))
-                .listener(LoadProgressBar(progressBar))
+                .listener(ProgressBarListener(progressBar))
                 .centerCrop()
                 .into(biding.imgCat)
         }

@@ -8,7 +8,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
-class LoadProgressBar(private val progressbar: ProgressBar) : RequestListener<Drawable?> {
+class ProgressBarListener(private val progressbar: ProgressBar) : RequestListener<Drawable?> {
 
     override fun onLoadFailed(
         e: GlideException?,
