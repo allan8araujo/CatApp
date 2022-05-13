@@ -12,7 +12,7 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    val api:catApi by lazy {
+    val api: catApi by lazy {
         retrofit.create(catApi::class.java)
     }
 }

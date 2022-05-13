@@ -10,23 +10,24 @@ import com.example.catapp.databinding.ActivityMainBinding
 import com.example.catapp.repository.Repository
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var biding: ActivityMainBinding
+
+    private val biding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    val progressBar by lazy { biding.pbLoading }
+
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        biding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(biding.root)
-        supportActionBar?.hide()
-
+        progressBar.visibility = View.INVISIBLE
         biding.btnCatSearch.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
-        if (view.id == R.id.btnCatSearch) {
-            val progressBar = biding.pbLoading
-
-            progressBar.visibility = View.VISIBLE
+        if (view.id == biding.btnCatSearch.id) {
             val repository = Repository()
             val viewModelFactory = MainViewModelFactory(repository)
             viewModel =
@@ -36,11 +37,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             Glide.with(biding.root.context)
                 .load(BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream()))
-//                .placeholder(R.drawable.pb_loading)
+              //  .placeholder(progressBar)
+                .listener(LoadProgressBar(progressBar))
                 .centerCrop()
                 .into(biding.imgCat)
-
-            progressBar.visibility = View.GONE
         }
     }
 }
