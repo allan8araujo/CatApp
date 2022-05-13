@@ -29,7 +29,6 @@
             android:layout_height="160dp"
             android:layout_centerInParent="true"
             android:fromDegrees="0"
-            android:progressDrawable="@drawable/pb_loading"
             android:toDegrees="1080"
             app:layout_constraintBottom_toBottomOf="@+id/imgCat"
             app:layout_constraintEnd_toEndOf="@+id/imgCat"
