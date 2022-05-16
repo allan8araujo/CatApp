@@ -1,4 +1,4 @@
-package com.example.catapp
+package com.example.catapp.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

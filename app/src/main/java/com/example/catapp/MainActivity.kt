@@ -4,10 +4,14 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.catapp.databinding.ActivityMainBinding
 import com.example.catapp.repository.Repository
+import com.example.catapp.viewModel.MainViewModel
+import com.example.catapp.viewModel.MainViewModelFactory
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -26,21 +30,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
         progressBar.visibility = View.INVISIBLE
-        biding.btnCatSearch.setOnClickListener(this)
+        biding.buttonCatSearch.setOnClickListener(this)
+        biding.buttonArrowHistory.setOnClickListener(this)
 
-        viewModel.myResponse.observe(this) { response ->
+        myResponseObserve()
+        progressBar.visibility = View.VISIBLE
+        viewModel.getImage()
+    }
+
+    override fun onClick(view: View) {
+        if (view.id == R.id.button_cat_search) {
+            progressBar.visibility = View.VISIBLE
+            viewModel.getImage()
+        } else if (view.id == R.id.button_arrow_history) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add<HistoryFragment>(R.id.fragment_history)
+            }
+        }
+    }
+
+    private fun myResponseObserve() {
+        viewModel.myResponse.observe(this) {
             Glide.with(biding.root.context)
                 .load(BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream()))
                 .listener(ProgressBarListener(progressBar))
                 .centerCrop()
                 .into(biding.imgCat)
-        }
-    }
-
-    override fun onClick(view: View) {
-        if (view.id == biding.btnCatSearch.id) {
-            progressBar.visibility = View.VISIBLE
-            viewModel.getImage()
         }
     }
 }

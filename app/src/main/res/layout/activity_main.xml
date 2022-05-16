@@ -4,20 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
     android:background="#AD99BD"
-    >
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <ImageView
         android:id="@+id/imgCat"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:contentDescription="@string/cat_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+
+    <ImageView
+        android:id="@+id/button_arrow_history"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/round_button"
+        android:contentDescription="@string/cat_image"
+        android:padding="15dp"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_cat_search"
+        app:layout_constraintTop_toBottomOf="@+id/imgCat" />
 
     <ProgressBar
         android:id="@+id/pbLoading"
@@ -33,14 +51,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCatSearch"
-        android:layout_width="169dp"
-        android:layout_height="59dp"
+        android:id="@+id/button_cat_search"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
         android:text="@string/hitme"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
