@@ -1,60 +1,82 @@
 package com.example.catapp.ui.fragments
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.example.catapp.ProgressBarListener
 import com.example.catapp.R
+import com.example.catapp.databinding.FragmentHistory2Binding
+import com.example.catapp.repository.Repository
+import com.example.catapp.viewModel.MainViewModel
+import com.example.catapp.viewModel.MainViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class HistoryFragment : Fragment(R.layout.fragment_history2), View.OnClickListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val repository = Repository()
+    private val viewModelFactory = MainViewModelFactory(repository)
+    private val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)
+            .get(MainViewModel::class.java)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+    private lateinit var binding: FragmentHistory2Binding
+
+    override
+
+    fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history2, container, false)
+        val binding = FragmentHistory2Binding.inflate(inflater, container, false)
+        val view = binding.root
+        val progressBar = binding.pbLoading
+        progressBar.visibility = View.INVISIBLE
+        binding.buttonCatSearch.setOnClickListener(this)
+        //binding..setOnClickListener(this)
+
+        viewModel.getImage()
+        fun myResponseObserve() {
+            viewModel.myResponse.observe(viewLifecycleOwner) {
+                Glide.with(binding.root.context)
+                    .load(BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream()))
+                    .listener(ProgressBarListener(progressBar))
+                    .centerCrop()
+                    .into(binding.imgCat)
+            }
+        }
+
+        myResponseObserve()
+        progressBar.visibility = View.VISIBLE
+
+        binding.buttonCatSearch.setOnClickListener {
+            progressBar.visibility = View.VISIBLE
+            viewModel.getImage()
+        }
+//        binding.buttonArrowHistory.setOnClickListener {
+////            val a: FragmentTransaction = supportFragmentManager.beginTransaction()
+////            val b = Fragment()
+////            a.replace(R.id.container, b)
+////            a.commit()
+//        }
+
+        fun replaceFragment(fragment: Fragment) {
+            if (fragment != null) {
+//            val transaction = supportFragmentManager.beginTransaction()
+//            transaction.replace(R.id.fragment_container, fragment)
+//            transaction.commit()
+            }
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onClick(p0: View?) {
+        TODO("Not yet implemented")
     }
 }
