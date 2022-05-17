@@ -17,9 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
 
-        val transactionNavigation = supportFragmentManager.beginTransaction()
-        transactionNavigation.replace(R.id.fragment_container, CatFragment())
-        transactionNavigation.commit()
+        replaceFragment(CatFragment())
     }
 
     fun replaceFragment(fragment: Fragment) {
