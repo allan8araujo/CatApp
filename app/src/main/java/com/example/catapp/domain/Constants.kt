@@ -1,4 +1,4 @@
-package com.example.catapp.util
+package com.example.catapp.domain
 
 object Constants {
     val URL= "https://cataas.com/"

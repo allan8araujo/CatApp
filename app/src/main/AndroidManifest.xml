@@ -18,7 +18,7 @@
             android:exported="false"
             android:label="@string/title_activity_navigation_fragment" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.catapp.presenter.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

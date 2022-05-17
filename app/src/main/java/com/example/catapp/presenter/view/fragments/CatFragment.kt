@@ -1,4 +1,4 @@
-package com.example.catapp.ui.fragments
+package com.example.catapp.presenter.view.fragments
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.catapp.ProgressBarListener
+import com.example.catapp.presenter.adapters.ProgressBarListener
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentCatBinding
-import com.example.catapp.repository.Repository
-import com.example.catapp.viewModel.MainViewModel
-import com.example.catapp.viewModel.MainViewModelFactory
+import com.example.catapp.data.repository.Repository
+import com.example.catapp.presenter.viewModel.MainViewModel
+import com.example.catapp.presenter.viewModel.MainViewModelFactory
 
 class CatFragment : Fragment(R.layout.fragment_cat) {
 

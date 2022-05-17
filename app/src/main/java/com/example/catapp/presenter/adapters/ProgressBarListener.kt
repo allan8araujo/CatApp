@@ -1,4 +1,4 @@
-package com.example.catapp
+package com.example.catapp.presenter.adapters
 
 import android.graphics.drawable.Drawable
 import android.view.View

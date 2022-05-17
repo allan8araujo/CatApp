@@ -1,6 +1,6 @@
-package com.example.catapp.api
+package com.example.catapp.data.api
 
-import com.example.catapp.util.Constants
+import com.example.catapp.domain.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -12,7 +12,7 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    val api: catApi by lazy {
-        retrofit.create(catApi::class.java)
+    val API: CatApi by lazy {
+        retrofit.create(CatApi::class.java)
     }
 }

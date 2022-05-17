@@ -1,13 +1,13 @@
-package com.example.catapp
+package com.example.catapp.presenter.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.catapp.R
 import com.example.catapp.databinding.ActivityMainBinding
-import com.example.catapp.ui.fragments.CatFragment
-import com.example.catapp.ui.fragments.HistoryFragment
+import com.example.catapp.presenter.view.fragments.CatFragment
+import com.example.catapp.presenter.view.fragments.HistoryFragment
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

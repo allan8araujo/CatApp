@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.catapp.ui.fragments.HistoryFragment"
+        android:name="com.example.catapp.presenter.view.fragments.HistoryFragment"
         android:label="fragment_history2"
         tools:layout="@layout/fragment_cat" />
     <fragment
         android:id="@+id/catFragment"
-        android:name="com.example.catapp.ui.fragments.CatFragment"
+        android:name="com.example.catapp.presenter.view.fragments.CatFragment"
         android:label="fragment_cat"
         tools:layout="@layout/fragment_history" />
 </navigation>

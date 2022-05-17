@@ -1,9 +1,9 @@
-package com.example.catapp.viewModel
+package com.example.catapp.presenter.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.catapp.repository.Repository
+import com.example.catapp.data.repository.Repository
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 
