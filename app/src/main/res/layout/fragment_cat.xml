@@ -8,11 +8,12 @@
 
 
     <ImageView
-        android:layout_marginVertical="15sp"
         android:id="@+id/imgCat"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="15sp"
         android:contentDescription="@string/cat_image"
+        app:layout_constraintBottom_toTopOf="@+id/button_cat_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,6 +28,7 @@
         android:layout_marginTop="160dp"
         android:fromDegrees="0"
         android:toDegrees="1080"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,15 +36,15 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_cat_search"
-        android:layout_width="93dp"
-        android:layout_height="92dp"
+        android:layout_width="158dp"
+        android:layout_height="67dp"
         android:layout_gravity="center"
         android:layout_marginBottom="28dp"
         android:background="@drawable/round_button"
-        android:text="+"
+        android:text="@string/hitme"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="64sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

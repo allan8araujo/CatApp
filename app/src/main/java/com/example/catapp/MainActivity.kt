@@ -1,13 +1,15 @@
 package com.example.catapp
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import com.example.catapp.databinding.ActivityMainBinding
 import com.example.catapp.ui.fragments.CatFragment
+import com.example.catapp.ui.fragments.HistoryFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val biding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -18,13 +20,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(biding.root)
 
         replaceFragment(CatFragment())
+        val navHistoryButton = findViewById<View>(R.id.ic_hist)
+            .setOnClickListener(this)
+        val navImageButton =
+            findViewById<View>(R.id.ic_image)
+                .setOnClickListener(this)
     }
 
-    fun replaceFragment(fragment: Fragment) {
+    private fun replaceFragment(fragment: Fragment) {
         if (fragment != null) {
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, fragment)
             transaction.commit()
+        }
+    }
+
+    override fun onClick(view: View?) {
+        if (view == findViewById(R.id.ic_hist)) {
+            replaceFragment(HistoryFragment())
+        } else if (view == findViewById(R.id.ic_image)) {
+            replaceFragment(CatFragment())
+
         }
     }
 }
