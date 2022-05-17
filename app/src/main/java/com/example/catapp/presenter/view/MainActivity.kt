@@ -14,33 +14,34 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val biding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+    private val navHistoryButton by lazy {
+        findViewById<View>(R.id.ic_hist)
+    }
+
+    private val navImageButton by lazy {
+        findViewById<View>(R.id.ic_image)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
 
         replaceFragment(CatFragment())
-        val navHistoryButton = findViewById<View>(R.id.ic_hist)
-            .setOnClickListener(this)
-        val navImageButton =
-            findViewById<View>(R.id.ic_image)
-                .setOnClickListener(this)
+        navHistoryButton.setOnClickListener(this)
+        navImageButton.setOnClickListener(this)
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        if (fragment != null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, fragment)
-            transaction.commit()
-        }
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, fragment)
+        transaction.commit()
     }
 
     override fun onClick(view: View?) {
-        if (view == findViewById(R.id.ic_hist)) {
+        if (view == navHistoryButton) {
             replaceFragment(HistoryFragment())
-        } else if (view == findViewById(R.id.ic_image)) {
+        } else if (view == navImageButton) {
             replaceFragment(CatFragment())
-
         }
     }
 }
