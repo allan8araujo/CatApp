@@ -8,6 +8,7 @@ import com.example.catapp.R
 import com.example.catapp.databinding.ActivityMainBinding
 import com.example.catapp.presenter.view.fragments.CatFragment
 import com.example.catapp.presenter.view.fragments.HistoryFragment
+import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun replaceFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
+
         transaction.commit()
     }
 

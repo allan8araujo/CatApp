@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.CatApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#AD99BD</item>
-        <item name="colorPrimaryVariant">#AD99BD</item>
+        <item name="colorPrimary">@color/custom_purple</item>
+        <item name="colorPrimaryVariant">@color/custom_purple</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
