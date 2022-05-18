@@ -1,22 +1,23 @@
-package com.example.catapp.presenter.view.adapter
+package com.example.catapp.presenter.adapters
 
-import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.drawToBitmap
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.catapp.databinding.ItemCatRecyclerViewBinding
-
 
 class CatItemAdapter : ListAdapter<CatPhoto, CatItemAdapter.CatItemViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatItemViewHolder {
         val binding =
-            ItemCatRecyclerViewBinding.inflate(LayoutInflater
-                .from(parent.context), parent, false)
+            ItemCatRecyclerViewBinding.inflate(
+                LayoutInflater
+                    .from(parent.context),
+                parent, false
+            )
         return CatItemViewHolder(binding)
     }
 
@@ -29,8 +30,7 @@ class CatItemAdapter : ListAdapter<CatPhoto, CatItemAdapter.CatItemViewHolder>(D
 
         fun bind(cat: CatPhoto) {
             try {
-                val test= cat.image?.drawToBitmap()
-                binding.imageCat.setImageBitmap(test)
+                binding.imageCat.setImageBitmap(cat.image)
             } catch (e: Exception) {
                 Log.i("Erro: ", e.toString())
             }
@@ -46,7 +46,6 @@ class CatItemAdapter : ListAdapter<CatPhoto, CatItemAdapter.CatItemViewHolder>(D
             override fun areContentsTheSame(oldItem: CatPhoto, newItem: CatPhoto): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 }

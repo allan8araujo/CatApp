@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.catapp.databinding.FragmentHistoryBinding
-import com.example.catapp.presenter.view.adapter.CatItemAdapter
+import com.example.catapp.presenter.adapters.CatItemAdapter
 import com.example.catapp.presenter.viewModel.CatImageList
 
 class HistoryFragment : Fragment() {

@@ -2,11 +2,14 @@ package com.example.catapp.presenter.adapters
 
 import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.example.catapp.presenter.viewModel.CatImageList
 
 class ProgressBarListener(private val progressbar: ProgressBar) : RequestListener<Drawable?> {
 
@@ -28,6 +31,11 @@ class ProgressBarListener(private val progressbar: ProgressBar) : RequestListene
         isFirstResource: Boolean,
     ): Boolean {
         progressbar.visibility = View.GONE
+        getBitmapFromResource(resource)
         return false
+    }
+
+    private fun getBitmapFromResource(resource: Drawable?) {
+        CatImageList.listcats.add(CatPhoto(resource?.toBitmap()))
     }
 }
