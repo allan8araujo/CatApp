@@ -12,9 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.catapp.R
 import com.example.catapp.data.repository.Repository
 import com.example.catapp.databinding.FragmentCatBinding
-import com.example.catapp.presenter.adapters.CatPhoto
 import com.example.catapp.presenter.adapters.ProgressBarListener
-import com.example.catapp.presenter.viewModel.CatImageList
 import com.example.catapp.presenter.viewModel.MainViewModel
 import com.example.catapp.presenter.viewModel.MainViewModelFactory
 
@@ -50,7 +48,8 @@ class CatFragment : Fragment(R.layout.fragment_cat) {
     private fun myResponseObserve(binding: FragmentCatBinding, progressBar: ProgressBar) {
 
         viewModel.myResponse.observe(viewLifecycleOwner) {
-            val responseToBitmap = BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream())
+            val responseToBitmap =
+                BitmapFactory.decodeStream(viewModel.myResponse.value?.byteStream())
             Glide.with(binding.root.context)
                 .load(responseToBitmap)
                 .centerCrop()

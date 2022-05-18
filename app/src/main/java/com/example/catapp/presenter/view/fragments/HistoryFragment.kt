@@ -13,13 +13,12 @@ class HistoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?,
+    ): View {
         val binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val view = binding.root
         val catListAdapter = CatItemAdapter()
         binding.catListRecycerview.adapter = catListAdapter
-
         catListAdapter.submitList(CatImageList.listcats)
 
         return view
