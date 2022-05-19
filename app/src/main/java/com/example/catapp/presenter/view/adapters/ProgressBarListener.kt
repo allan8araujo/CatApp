@@ -1,4 +1,4 @@
-package com.example.catapp.presenter.adapters
+package com.example.catapp.presenter.view.adapters
 
 import android.graphics.drawable.Drawable
 import android.view.View
@@ -35,6 +35,6 @@ class ProgressBarListener(private val progressbar: ProgressBar) : RequestListene
     }
 
     private fun getBitmapFromResource(resource: Drawable?) {
-        CatImageList.listcats.add(CatPhoto(resource?.toBitmap()))
+        CatImageList.listcats.add(CatPhoto(CatImageList.listcats.size,resource?.toBitmap()))
     }
 }
