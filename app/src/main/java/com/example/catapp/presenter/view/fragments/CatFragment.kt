@@ -2,6 +2,7 @@ package com.example.catapp.presenter.view.fragments
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,12 +32,12 @@ class CatFragment : Fragment(R.layout.fragment_cat) {
         savedInstanceState: Bundle?,
     ): View {
         val binding = FragmentCatBinding.inflate(inflater, container, false)
-        val view = binding.root
         val progressBar = binding.pbLoading
-        progressBar.visibility = View.INVISIBLE
-        viewModelGet.getImage()
+        val view = binding.root
+
         progressBar.visibility = View.VISIBLE
         myResponseObserve(binding, progressBar)
+        viewModelGet.getImage()
 
         binding.buttonCatSearch.setOnClickListener {
             progressBar.visibility = View.VISIBLE
@@ -50,6 +51,7 @@ class CatFragment : Fragment(R.layout.fragment_cat) {
         viewModelGet.myResponse.observe(viewLifecycleOwner) {
             val responseToBitmap =
                 BitmapFactory.decodeStream(viewModelGet.myResponse.value?.byteStream())
+
             Glide.with(binding.root.context)
                 .load(responseToBitmap)
                 .centerCrop()

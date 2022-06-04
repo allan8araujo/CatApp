@@ -18,7 +18,6 @@ class ProgressBarListener(private val progressbar: ProgressBar) : RequestListene
         target: Target<Drawable?>?,
         isFirstResource: Boolean,
     ): Boolean {
-        progressbar.visibility = View.GONE
         return false
     }
 
@@ -29,12 +28,12 @@ class ProgressBarListener(private val progressbar: ProgressBar) : RequestListene
         dataSource: DataSource?,
         isFirstResource: Boolean,
     ): Boolean {
-        progressbar.visibility = View.GONE
         getBitmapFromResource(resource)
+        progressbar.visibility = View.GONE
         return false
     }
 
     private fun getBitmapFromResource(resource: Drawable?) {
-        CatImageList.listcats.add(CatPhoto(CatImageList.listcats.size,resource?.toBitmap()))
+        CatImageList.listcats.add(CatPhoto(CatImageList.listcats.size, resource?.toBitmap()))
     }
 }

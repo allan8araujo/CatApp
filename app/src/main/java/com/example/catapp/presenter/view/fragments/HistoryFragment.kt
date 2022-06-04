@@ -37,7 +37,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun onClickCatList(cat: CatPhoto) {
-        catFragmentsViewModel.imageSelected(cat)
         findNavController().navigate(R.id.to_fullScreenFragment)
+        catFragmentsViewModel.imageSelected(cat)
     }
 }
