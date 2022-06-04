@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.catapp.R
 import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
 import com.example.catapp.presenter.view.adapters.CatPhoto
-import com.example.catapp.presenter.view.adapters.FragmentReplacerAdapter
 import com.example.catapp.presenter.viewModel.CatFragmentsViewModel
-import com.example.catapp.presenter.viewModel.CatImageList
+import com.example.catapp.presenter.util.CatImageList
 
 class HistoryFragment : Fragment() {
     private val catFragmentsViewModel: CatFragmentsViewModel by activityViewModels()
@@ -35,9 +37,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun onClickCatList(cat: CatPhoto) {
-        val transaction = (activity as AppCompatActivity).supportFragmentManager.beginTransaction()
-        FragmentReplacerAdapter().replaceFragment(FullScreenImageFragment(), transaction)
-
         catFragmentsViewModel.imageSelected(cat)
+        findNavController().navigate(R.id.to_fullScreenFragment)
     }
 }

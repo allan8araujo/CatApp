@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/back_to_list"
-        android:layout_width="79dp"
-        android:layout_height="72dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/round_button"

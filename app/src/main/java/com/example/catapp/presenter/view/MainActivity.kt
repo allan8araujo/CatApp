@@ -1,56 +1,32 @@
 package com.example.catapp.presenter.view
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.catapp.R
-import com.example.catapp.data.repository.Repository
 import com.example.catapp.databinding.ActivityMainBinding
-import com.example.catapp.presenter.view.adapters.FragmentReplacerAdapter
-import com.example.catapp.presenter.view.fragments.CatFragment
-import com.example.catapp.presenter.view.fragments.HistoryFragment
-import com.example.catapp.presenter.viewModel.GetCatViewModel
-import com.example.catapp.presenter.viewModel.MainViewModelFactory
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
 
-    private val biding by lazy {
+    private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-    private val navHistoryButton by lazy {
-        findViewById<View>(R.id.ic_hist)
-    }
-
-    private val navImageButton by lazy {
-        findViewById<View>(R.id.ic_image)
+    private val controller by lazy {
+        findNavController(R.id.activity_main_navHost)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(biding.root)
+        setContentView(binding.root)
+        NavigationUI.setupWithNavController(binding.bottomNavBar, controller)
 
-        navHistoryButton.setOnClickListener(this)
-        navImageButton.setOnClickListener(this)
-        if (savedInstanceState == null) {
-            callReplaceFragment(CatFragment())
+        binding.bottomNavBar.setOnClickListener {
+            if (it.id == R.id.catFragment) {
+                controller.navigate(R.id.catFragment)
+            } else if (it.id == R.id.historyFragment) {
+                controller.navigate(R.id.to_historyFragment)
+            }
         }
-    }
-
-    override fun onClick(view: View?) {
-        if (view == navHistoryButton) {
-            callReplaceFragment(HistoryFragment())
-        } else if (view == navImageButton) {
-            callReplaceFragment(CatFragment())
-        }
-    }
-
-    private fun callReplaceFragment(
-        fragment: Fragment,
-        transaction: FragmentTransaction = supportFragmentManager.beginTransaction(),
-    ) {
-        FragmentReplacerAdapter().replaceFragment(fragment, transaction)
     }
 }

@@ -12,9 +12,9 @@ import com.bumptech.glide.Glide
 import com.example.catapp.R
 import com.example.catapp.data.repository.Repository
 import com.example.catapp.databinding.FragmentCatBinding
+import com.example.catapp.presenter.util.MainViewModelFactory
 import com.example.catapp.presenter.view.adapters.ProgressBarListener
 import com.example.catapp.presenter.viewModel.GetCatViewModel
-import com.example.catapp.presenter.viewModel.MainViewModelFactory
 
 class CatFragment : Fragment(R.layout.fragment_cat) {
 

@@ -1,4 +1,4 @@
-package com.example.catapp.presenter.viewModel
+package com.example.catapp.presenter.util
 
 import com.example.catapp.presenter.view.adapters.CatPhoto
 

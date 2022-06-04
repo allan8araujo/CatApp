@@ -75,4 +75,11 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     implementation "androidx.fragment:fragment-ktx:1.4.1"
+    implementation 'com.google.android.material:material:1.6.1'
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.4.2")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:2.4.2")
 }

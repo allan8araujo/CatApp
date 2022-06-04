@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/catFragment">
+
+    <fragment
+        android:id="@+id/catFragment"
+        android:name="com.example.catapp.presenter.view.fragments.CatFragment"
+        android:label="CatFragment"
+        tools:layout="@layout/fragment_cat" >
+        <action
+            android:id="@+id/to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullScreenImageFragment"
+        android:name="com.example.catapp.presenter.view.fragments.FullScreenImageFragment"
+        android:label="FullScreenImage"
+        tools:layout="@layout/fragment_full_screen_image" >
+        <action
+            android:id="@+id/back_to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.catapp.presenter.view.fragments.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/to_fullScreenFragment"
+            app:destination="@id/fullScreenImageFragment" />
+    </fragment>
+</navigation>
