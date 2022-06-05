@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
-import com.example.catapp.presenter.view.adapters.CatPhoto
+import com.example.catapp.data.models.CatPhoto
 import com.example.catapp.presenter.viewModel.CatFragmentsViewModel
 import com.example.catapp.presenter.util.CatImageList
 

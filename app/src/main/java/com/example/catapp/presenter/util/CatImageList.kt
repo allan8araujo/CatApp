@@ -1,6 +1,6 @@
 package com.example.catapp.presenter.util
 
-import com.example.catapp.presenter.view.adapters.CatPhoto
+import com.example.catapp.data.models.CatPhoto
 
 class CatImageList {
     companion object ListOfCat {

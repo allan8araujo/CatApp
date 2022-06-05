@@ -3,7 +3,7 @@ package com.example.catapp.presenter.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.catapp.presenter.view.adapters.CatPhoto
+import com.example.catapp.data.models.CatPhoto
 
 class CatFragmentsViewModel : ViewModel() {
     private val mutableSelectedItem = MutableLiveData<CatPhoto>()
