@@ -1,6 +1,5 @@
 package com.example.catapp.presenter.viewModel
 
-import android.graphics.BitmapFactory
 import androidx.lifecycle.*
 import com.example.catapp.data.models.CatPhoto
 import com.example.catapp.data.repository.DaoRepository
@@ -9,7 +8,7 @@ import okhttp3.ResponseBody
 
 class CatViewModel(private val repository: DaoRepository) : ViewModel() {
     val myResponse: MutableLiveData<ResponseBody> = MutableLiveData()
-    fun getImageAndInsert() {
+    fun getImage() {
         viewModelScope.launch {
             val response: ResponseBody = repository.getImage()
             myResponse.value = response

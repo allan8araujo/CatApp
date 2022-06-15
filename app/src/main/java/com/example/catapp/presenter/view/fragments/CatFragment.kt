@@ -26,11 +26,12 @@ class CatFragment : Fragment() {
         val view = binding.root
         val progressBar = binding.pbLoading
         progressBar.visibility = View.VISIBLE
+        catViewModel.getImage()
         myResponseObserve(binding, progressBar)
 
         binding.buttonCatSearch.setOnClickListener {
             progressBar.visibility = View.VISIBLE
-            catViewModel.getImageAndInsert()
+            catViewModel.getImage()
         }
         return view
     }

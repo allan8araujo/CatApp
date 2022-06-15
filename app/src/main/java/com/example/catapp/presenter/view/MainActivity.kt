@@ -24,11 +24,10 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        viewModelGet.getImageAndInsert()
+        viewModelGet.getImage()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.activity_main_navHost) as NavHostFragment
