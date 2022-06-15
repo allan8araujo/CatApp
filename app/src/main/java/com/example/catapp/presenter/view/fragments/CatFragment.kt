@@ -8,23 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
-import com.example.catapp.R
-import com.example.catapp.data.repository.Repository
 import com.example.catapp.databinding.FragmentCatBinding
-import com.example.catapp.presenter.util.MainViewModelFactory
 import com.example.catapp.presenter.view.adapters.ProgressBarListener
-import com.example.catapp.presenter.viewModel.GetCatViewModel
+import com.example.catapp.presenter.viewModel.CatViewModel
 
-class CatFragment : Fragment(R.layout.fragment_cat) {
-
-    private val repository = Repository()
-    private val viewModelFactory = MainViewModelFactory(repository)
-    private val viewModelGet: GetCatViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)
-            .get(GetCatViewModel::class.java)
-    }
+class CatFragment : Fragment() {
+    private val catViewModel: CatViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,31 +23,32 @@ class CatFragment : Fragment(R.layout.fragment_cat) {
         savedInstanceState: Bundle?,
     ): View {
         val binding = FragmentCatBinding.inflate(inflater, container, false)
-        val progressBar = binding.pbLoading
         val view = binding.root
-
+        val progressBar = binding.pbLoading
         progressBar.visibility = View.VISIBLE
         myResponseObserve(binding, progressBar)
-        viewModelGet.getImage()
 
         binding.buttonCatSearch.setOnClickListener {
             progressBar.visibility = View.VISIBLE
-            viewModelGet.getImage()
+            catViewModel.getImageAndInsert()
         }
         return view
     }
 
     private fun myResponseObserve(binding: FragmentCatBinding, progressBar: ProgressBar) {
+        try {
+            catViewModel.myResponse.observe(viewLifecycleOwner) { responseBody ->
+                val responseToBitmap =
+                    BitmapFactory.decodeStream(responseBody.byteStream())
 
-        viewModelGet.myResponse.observe(viewLifecycleOwner) {
-            val responseToBitmap =
-                BitmapFactory.decodeStream(viewModelGet.myResponse.value?.byteStream())
-
-            Glide.with(binding.root.context)
-                .load(responseToBitmap)
-                .centerCrop()
-                .listener(ProgressBarListener(progressBar))
-                .into(binding.imgCat)
+                Glide.with(binding.root.context)
+                    .load(responseToBitmap)
+                    .centerCrop()
+                    .listener(ProgressBarListener(progressBar, catViewModel))
+                    .into(binding.imgCat)
+            }
+        } catch (e: Exception) {
+            Log.i("@@@@@@", e.message.toString())
         }
     }
 }

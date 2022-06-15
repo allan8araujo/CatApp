@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "cat_photos")
 data class CatPhoto(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Int,
-    @ColumnInfo(name = "image") var image: Bitmap?,
-)
+    @ColumnInfo(name = "image") val image: Bitmap?,
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

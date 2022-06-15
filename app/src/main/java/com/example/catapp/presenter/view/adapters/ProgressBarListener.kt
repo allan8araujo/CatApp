@@ -9,9 +9,13 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.catapp.data.models.CatPhoto
-import com.example.catapp.presenter.util.CatImageList
+import com.example.catapp.presenter.viewModel.CatViewModel
 
-class ProgressBarListener(private val progressbar: ProgressBar) : RequestListener<Drawable?> {
+class ProgressBarListener(
+    private val progressbar: ProgressBar,
+    private val catViewModel: CatViewModel,
+) :
+    RequestListener<Drawable?> {
 
     override fun onLoadFailed(
         e: GlideException?,
@@ -35,6 +39,6 @@ class ProgressBarListener(private val progressbar: ProgressBar) : RequestListene
     }
 
     private fun getBitmapFromResource(resource: Drawable?) {
-        CatImageList.listcats.add(CatPhoto(CatImageList.listcats.size, resource?.toBitmap()))
+        catViewModel.insert(CatPhoto(resource?.toBitmap()))
     }
 }
