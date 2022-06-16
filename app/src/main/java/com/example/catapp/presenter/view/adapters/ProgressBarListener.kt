@@ -8,8 +8,8 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.example.catapp.data.models.CatPhoto
 import com.example.catapp.presenter.viewModel.CatViewModel
+import com.example.modelsdto.models.CatPhoto
 
 class ProgressBarListener(
     private val progressbar: ProgressBar,

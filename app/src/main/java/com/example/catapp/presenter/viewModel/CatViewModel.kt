@@ -1,8 +1,8 @@
 package com.example.catapp.presenter.viewModel
 
 import androidx.lifecycle.*
-import com.example.catapp.data.models.CatPhoto
-import com.example.catapp.domain.repository.Repository
+import com.example.modelsdto.models.CatPhoto
+import com.example.catapp.data.Repository
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 

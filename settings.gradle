@@ -8,3 +8,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "catApp"
 include ':app'
+include ':modelsDTO'
+include ':api'
+include ':database'

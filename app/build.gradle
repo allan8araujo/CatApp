@@ -92,4 +92,9 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
     androidTestImplementation "androidx.room:room-testing:2.4.2"
+
+    //modules
+    implementation project(path: ':modelsDTO')
+    implementation project(path: ':api')
+    implementation project(path: ':database')
 }

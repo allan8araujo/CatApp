@@ -6,15 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.catapp.R
-import com.example.catapp.data.database.CatDataBase
-import com.example.catapp.domain.repository.Repository
+import com.example.catapp.data.Repository
 import com.example.catapp.databinding.ActivityMainBinding
 import com.example.catapp.presenter.util.MainViewModelFactory
 import com.example.catapp.presenter.viewModel.CatViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val database by lazy { CatDataBase.CatRoomDatabase.getDataBase(this) }
+    private val database by lazy { com.example.database.CatDataBase.CatRoomDatabase.getDataBase(this) }
     private val viewModelGet: CatViewModel by viewModels {
         MainViewModelFactory(Repository(database.appDao()))
     }
