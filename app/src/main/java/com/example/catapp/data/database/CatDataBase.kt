@@ -1,14 +1,12 @@
-package com.example.catapp.data
+package com.example.catapp.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.catapp.data.Daos.CatDao
+import com.example.catapp.data.database.daos.CatDao
 import com.example.catapp.data.models.CatPhoto
-import com.example.catapp.presenter.view.MainActivity
-import kotlinx.coroutines.CoroutineScope
 
 class CatDataBase {
 
@@ -20,7 +18,6 @@ class CatDataBase {
         companion object {
             @Volatile
             private var INSTANCE: CatRoomDatabase? = null
-
             fun getDataBase(context: Context): CatRoomDatabase {
                 return INSTANCE ?: synchronized(this) {
                     val instance = Room.databaseBuilder(

@@ -1,4 +1,4 @@
-package com.example.catapp.data.Daos
+package com.example.catapp.data.database.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -12,8 +12,8 @@ interface CatDao {
     fun getCatsFromDB(): Flow<List<CatPhoto>>
 
     @Insert
-    suspend fun insertCat(cat: CatPhoto)
+    suspend fun insertCatInDB(cat: CatPhoto)
 
     @Query("DELETE FROM cat_photos")
-    suspend fun deleteAll(): Int
+    suspend fun deleteAllInDB(): Int
 }

@@ -2,15 +2,15 @@ package com.example.catapp.presenter.viewModel
 
 import androidx.lifecycle.*
 import com.example.catapp.data.models.CatPhoto
-import com.example.catapp.data.repository.DaoRepository
+import com.example.catapp.domain.repository.Repository
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 
-class CatViewModel(private val repository: DaoRepository) : ViewModel() {
+class CatViewModel(private val repository: Repository) : ViewModel() {
     val myResponse: MutableLiveData<ResponseBody> = MutableLiveData()
     fun getImage() {
         viewModelScope.launch {
-            val response: ResponseBody = repository.getImage()
+            val response: ResponseBody = repository.getFromApiImage()
             myResponse.value = response
         }
     }
@@ -24,6 +24,6 @@ class CatViewModel(private val repository: DaoRepository) : ViewModel() {
 
     val allCats: LiveData<List<CatPhoto>>? = repository.allCats?.asLiveData()
     fun insert(cat: CatPhoto) = viewModelScope.launch {
-        repository.insert(cat)
+        repository.insertInDatabase(cat)
     }
 }
