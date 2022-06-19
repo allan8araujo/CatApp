@@ -24,9 +24,11 @@ class HistoryFragment : Fragment() {
         val binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val view = binding.root
         val catListAdapter = CatItemAdapter()
-
         catFragmentsViewModel.allCats?.observe(viewLifecycleOwner) { listCatPhoto ->
-            catListAdapter.submitList(listCatPhoto)
+            val listcat = listCatPhoto.sortedByDescending { catPhoto ->
+                catPhoto.id
+            }
+            catListAdapter.submitList(listcat)
         }
 
         binding.catListRecycerview.adapter = catListAdapter

@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_cat" >
         <action
             android:id="@+id/to_historyFragment"
-            app:destination="@id/historyFragment" />
+            app:destination="@id/historyFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/fullScreenImageFragment"
@@ -21,7 +23,9 @@
         tools:layout="@layout/fragment_full_screen_image" >
         <action
             android:id="@+id/back_to_historyFragment"
-            app:destination="@id/historyFragment" />
+            app:destination="@id/historyFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -30,6 +34,8 @@
         tools:layout="@layout/fragment_history" >
         <action
             android:id="@+id/to_fullScreenFragment"
-            app:destination="@id/fullScreenImageFragment" />
+            app:destination="@id/fullScreenImageFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
 </navigation>
