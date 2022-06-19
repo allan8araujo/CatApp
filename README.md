@@ -4,14 +4,14 @@
   The application was made in order to reduce anxiety symptoms in the midst of some type of crisis. 
   #### You click, you see a cat, simple as that.
   
-   It does transform the request into a bitmap and display to the user the image, using retrofit do requisition and glide to load image. Also add it to a static list to show it later if the users want to see the list of cats he already saw.
+   It does transform the request into a bitmap and display to the user the image, using retrofit do requisition and glide to load image. Also adds it to a database to persist the data and show it later to users, in a history tab of cats seen.
 
 ## [PT-BR] 
   este projeto já está disponível no site da API: https://cataas.com/#/integration
   A aplicação foi feita com o intuito de diminuir os sintomas de ansiedade em meio a algum tipo de crise. 
   #### Você clica, você vê um gato, simples assim.
   
-   Ele transforma a request em um bitmap e exibe ao usuário uma imagem, usando requisições do retrofit e glide para carregar a imagem. Também adiciona uma lista estática para mostrá-lo mais tarde se os usuários quiserem ver a lista de gatos que ele já viu.
+   Ele transforma a request em um bitmap e exibe ao usuário uma imagem, usando requisições do retrofit e glide para carregar a imagem. Também a adiciona em um banco de dados para persistir os dados e mostrá-lo posteriormente aos usuários, em uma aba de histórico de gatos vistos.  
 
 
 <p align="center">
