@@ -16,14 +16,20 @@ class CatViewModel(private val repository: Repository) : ViewModel() {
     }
 
     // Fullscreen vm
-    private val mutableSelectedItem = MutableLiveData<com.example.abstractions.CatPhoto>()
-    val selectedItem: LiveData<com.example.abstractions.CatPhoto> get() = mutableSelectedItem
-    fun imageSelected(SelectedCat: com.example.abstractions.CatPhoto) {
+    private val mutableSelectedItem = MutableLiveData<CatPhoto>()
+    val selectedItem: LiveData<CatPhoto> get() = mutableSelectedItem
+    fun imageSelected(SelectedCat: CatPhoto) {
         mutableSelectedItem.value = SelectedCat
     }
 
-    val allCats: LiveData<List<com.example.abstractions.CatPhoto>>? = repository.allCats?.asLiveData()
-    fun insert(cat: com.example.abstractions.CatPhoto) = viewModelScope.launch {
+    private val liveList: LiveData<MutableList<CatPhoto>>? = repository.allCats?.asLiveData()
+    val allCats: LiveData<MutableList<CatPhoto>>? = liveList
+
+    fun insert(cat: CatPhoto?) = viewModelScope.launch {
         repository.insertInDatabase(cat)
+    }
+
+    fun delete(cat: CatPhoto?) = viewModelScope.launch {
+        repository.deleteInDatabase(cat)
     }
 }

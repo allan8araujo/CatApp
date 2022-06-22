@@ -18,13 +18,25 @@ class FullScreenImageFragment : Fragment(R.layout.fragment_full_screen_image) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         val binding = FragmentFullScreenImageBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        catFragmentsViewModel.selectedItem.value.let { catPhoto ->
+            binding.deleteBtn.setOnClickListener {
+                findNavController().navigate(R.id.back_to_historyFragment)
+                val thereIsCat = catFragmentsViewModel.allCats?.value?.any { catPhoto_ ->
+                    catPhoto_.id == catPhoto?.id
+                }
+                catFragmentsViewModel.delete(catPhoto)
+            }
+            binding.imageFullscreen.setImageBitmap(catPhoto?.image)
+        }
+
         binding.backToList.setOnClickListener {
             findNavController().navigate(R.id.back_to_historyFragment)
         }
-        binding.imageFullscreen.setImageBitmap(catFragmentsViewModel.selectedItem.value?.image)
-        val view = binding.root
+
         return view
     }
 }

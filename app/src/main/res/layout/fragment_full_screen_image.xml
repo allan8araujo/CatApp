@@ -10,14 +10,16 @@
         android:id="@+id/image_fullscreen"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"
+        app:layout_constraintVertical_bias="1.0"
         tools:src="@tools:sample/avatars" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/back_to_list"
         android:layout_width="64dp"
         android:layout_height="64dp"
@@ -27,6 +29,16 @@
         android:src="@drawable/left_arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/delete_btn"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/round_button"
+        android:src="@drawable/ic_baseline_delete_24"
+        app:layout_constraintBottom_toBottomOf="@+id/back_to_list"
+        app:layout_constraintStart_toEndOf="@+id/back_to_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
