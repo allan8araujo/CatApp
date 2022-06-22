@@ -1,4 +1,4 @@
-package com.example.modelsdto.models
+package com.example.abstractions
 
 import android.graphics.Bitmap
 import androidx.room.ColumnInfo

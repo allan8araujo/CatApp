@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.modelsdto.models.CatPhoto
+import com.example.abstractions.CatPhoto
 import com.example.catapp.databinding.ItemCatRecyclerViewBinding
 
-class CatItemAdapter : ListAdapter<CatPhoto, CatItemAdapter.CatItemViewHolder>(DIFF_CALLBACK) {
-    var onClickListener: ((_cat: CatPhoto) -> Unit)? = null
+class CatItemAdapter : ListAdapter<com.example.abstractions.CatPhoto, CatItemAdapter.CatItemViewHolder>(DIFF_CALLBACK) {
+    var onClickListener: ((_cat: com.example.abstractions.CatPhoto) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatItemViewHolder {
         val binding =
@@ -27,10 +27,10 @@ class CatItemAdapter : ListAdapter<CatPhoto, CatItemAdapter.CatItemViewHolder>(D
 
     class CatItemViewHolder(
         private val binding: ItemCatRecyclerViewBinding,
-        private val onClickListener: ((position: CatPhoto) -> Unit)?,
+        private val onClickListener: ((position: com.example.abstractions.CatPhoto) -> Unit)?,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(cat: CatPhoto) {
+        fun bind(cat: com.example.abstractions.CatPhoto) {
             try {
                 binding.imageCat.setImageBitmap(cat.image)
                 binding.root.setOnClickListener {
@@ -43,12 +43,12 @@ class CatItemAdapter : ListAdapter<CatPhoto, CatItemAdapter.CatItemViewHolder>(D
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CatPhoto>() {
-            override fun areItemsTheSame(oldItem: CatPhoto, newItem: CatPhoto): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<com.example.abstractions.CatPhoto>() {
+            override fun areItemsTheSame(oldItem: com.example.abstractions.CatPhoto, newItem: com.example.abstractions.CatPhoto): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: CatPhoto, newItem: CatPhoto): Boolean {
+            override fun areContentsTheSame(oldItem: com.example.abstractions.CatPhoto, newItem: com.example.abstractions.CatPhoto): Boolean {
                 return oldItem == newItem
             }
         }

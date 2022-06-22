@@ -2,15 +2,15 @@ package com.example.catapp.data
 
 import androidx.annotation.WorkerThread
 import com.example.api.api.RetrofitInstance
-import com.example.modelsdto.models.CatPhoto
+import com.example.abstractions.CatPhoto
 import kotlinx.coroutines.flow.Flow
 import okhttp3.ResponseBody
 
 class Repository(private val catDao: com.example.database.daos.CatDao?) {
-    val allCats: Flow<List<CatPhoto>>? = catDao?.getCatsFromDB()
+    val allCats: Flow<List<com.example.abstractions.CatPhoto>>? = catDao?.getCatsFromDB()
 
     @WorkerThread
-    suspend fun insertInDatabase(cat: CatPhoto) {
+    suspend fun insertInDatabase(cat: com.example.abstractions.CatPhoto) {
         catDao?.insertCatInDB(cat)
     }
 

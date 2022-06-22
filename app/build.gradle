@@ -94,7 +94,7 @@ dependencies {
     androidTestImplementation "androidx.room:room-testing:2.4.2"
 
     //modules
-    implementation project(path: ':modelsDTO')
+    implementation project(path: ':abstractions')
     implementation project(path: ':api')
     implementation project(path: ':database')
 }

@@ -9,7 +9,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.catapp.presenter.viewModel.CatViewModel
-import com.example.modelsdto.models.CatPhoto
+import com.example.abstractions.CatPhoto
 
 class ProgressBarListener(
     private val progressbar: ProgressBar,
@@ -39,6 +39,6 @@ class ProgressBarListener(
     }
 
     private fun getBitmapFromResource(resource: Drawable?) {
-        catViewModel.insert(CatPhoto(resource?.toBitmap()))
+        catViewModel.insert(com.example.abstractions.CatPhoto(resource?.toBitmap()))
     }
 }
