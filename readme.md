@@ -13,6 +13,21 @@
   
    Ele transforma a request em um bitmap e exibe ao usuário uma imagem, usando requisições do retrofit e glide para carregar a imagem. Também a adiciona em um banco de dados para persistir os dados e mostrá-lo posteriormente aos usuários, em uma aba de histórico de gatos vistos.  
 
+## Exibição de gato e navegação da aba gatos salvos
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/77680596/169279680-63fd4fa9-e9c1-4f2f-a9df-fa9c6364d0a7.gif" width="30%" height="30%"/> <img src="https://user-images.githubusercontent.com/77680596/169282949-08aee920-df4d-476e-9e78-e4224303c295.gif" width="30%" height="30%"/> </p>
+ <img src="https://user-images.githubusercontent.com/77680596/175374515-327508f8-7eab-43c0-8e52-def40fb25d51.gif" width="30%" height="30%"/>
+ <img src="https://user-images.githubusercontent.com/77680596/175374523-476c4597-7307-482d-96cd-960208d85280.gif" width="30%" height="30%"/>
+  </p>
+  
+## Navegando entre as abas e excluindo uma foto da aba de gatos salvos
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/77680596/175374399-b369cd18-71b2-4e87-8fa5-45f6a97738b9.gif" width="30%" height="30%"/>
+ <img src="https://user-images.githubusercontent.com/77680596/175374479-25911dd3-9d0e-4e28-bf02-c7f0c5a7c3c2.gif" width="30%" height="30%"/>
+</p>
+  
+  ## Função de compartilhar foto de gato em outros apps
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/77680596/175374496-f925ea20-80e6-402a-8770-bef7c556093a.gif" width="30%" height="30%"/>
+</p>
