@@ -28,6 +28,11 @@ class HistoryFragment : Fragment() {
                 catPhoto.id
             }
             catListAdapter.submitList(listcat)
+            if (catListAdapter.itemCount == 0) {
+                binding.pbLoadingHistory.visibility = View.VISIBLE
+            } else {
+                binding.pbLoadingHistory.visibility = View.GONE
+            }
         }
 
         binding.catListRecycerview.adapter = catListAdapter
