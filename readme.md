@@ -4,14 +4,14 @@
   The application was made in order to reduce anxiety symptoms in the midst of some type of crisis. 
   #### You click, you see a cat, simple as that.
   
-   It does transform the request into a bitmap and display to the user the image, using retrofit do requisition and glide to load image. Also adds it to a database to persist the data and show it later to users, in a history tab of cats seen.
+   It does transform the request into a bitmap and display to the user the image, using retrofit do requisition and glide to load image. Also adds it to a database to persist the data and show it later to users, in a history tab of cats seen. It is also possible remove some catPhotos or share it with another apps from the application.
 
 ## [PT-BR] 
   este projeto já está disponível no site da API: https://cataas.com/#/integration
   A aplicação foi feita com o intuito de diminuir os sintomas de ansiedade em meio a algum tipo de crise. 
   #### Você clica, você vê um gato, simples assim.
   
-   Ele transforma a request em um bitmap e exibe ao usuário uma imagem, usando requisições do retrofit e glide para carregar a imagem. Também a adiciona em um banco de dados para persistir os dados e mostrá-lo posteriormente aos usuários, em uma aba de histórico de gatos vistos.  
+   Ele transforma a request em um bitmap e exibe ao usuário uma imagem, usando requisições do retrofit e glide para carregar a imagem. Também a adiciona em um banco de dados para persistir os dados e mostrá-lo posteriormente aos usuários, em uma aba de histórico de gatos vistos. Também é possível remover alguma foto ou compartilhar-la com outros aplicativos como PNG. 
 
 ## Exibição de gato e navegação da aba gatos salvos
 
