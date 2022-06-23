@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.abstractions.CatPhoto
 import com.example.catapp.databinding.ItemCatRecyclerViewBinding
 
-class CatItemAdapter : ListAdapter<com.example.abstractions.CatPhoto, CatItemAdapter.CatItemViewHolder>(DIFF_CALLBACK) {
+class CatItemAdapter :
+    ListAdapter<com.example.abstractions.CatPhoto, CatItemAdapter.CatItemViewHolder>(DIFF_CALLBACK) {
     var onClickListener: ((_cat: com.example.abstractions.CatPhoto) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatItemViewHolder {
@@ -43,14 +43,21 @@ class CatItemAdapter : ListAdapter<com.example.abstractions.CatPhoto, CatItemAda
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<com.example.abstractions.CatPhoto>() {
-            override fun areItemsTheSame(oldItem: com.example.abstractions.CatPhoto, newItem: com.example.abstractions.CatPhoto): Boolean {
-                return oldItem.id == newItem.id
-            }
+        private val DIFF_CALLBACK =
+            object : DiffUtil.ItemCallback<com.example.abstractions.CatPhoto>() {
+                override fun areItemsTheSame(
+                    oldItem: com.example.abstractions.CatPhoto,
+                    newItem: com.example.abstractions.CatPhoto,
+                ): Boolean {
+                    return oldItem.id == newItem.id
+                }
 
-            override fun areContentsTheSame(oldItem: com.example.abstractions.CatPhoto, newItem: com.example.abstractions.CatPhoto): Boolean {
-                return oldItem == newItem
+                override fun areContentsTheSame(
+                    oldItem: com.example.abstractions.CatPhoto,
+                    newItem: com.example.abstractions.CatPhoto,
+                ): Boolean {
+                    return oldItem == newItem
+                }
             }
-        }
     }
 }

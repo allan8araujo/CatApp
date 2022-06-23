@@ -42,13 +42,13 @@ class CatFragment : Fragment() {
             catViewModel.getImage()
         }
         binding.buttonCatShare.setOnClickListener {
-            val contentUri = getCatUri( binding.imgCat.drawToBitmap())
+            val contentUri = getCatUri(binding.imgCat.drawToBitmap())
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "image/png"
             intent.putExtra(Intent.EXTRA_SUBJECT, "Compartilhe o gato!")
             intent.putExtra(Intent.EXTRA_STREAM, contentUri)
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            startActivity(Intent.createChooser(intent,"Compartilhe via: "))
+            startActivity(Intent.createChooser(intent, "Compartilhe via: "))
         }
         return view
     }
@@ -63,7 +63,8 @@ class CatFragment : Fragment() {
         bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream)
         stream.flush()
         stream.close()
-        contentUri = FileProvider.getUriForFile(requireActivity(), "com.example.catapp.fileprovider", file)
+        contentUri =
+            FileProvider.getUriForFile(requireActivity(), "com.example.catapp.fileprovider", file)
         return contentUri
     }
 

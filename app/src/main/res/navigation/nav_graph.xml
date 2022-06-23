@@ -9,7 +9,7 @@
         android:id="@+id/catFragment"
         android:name="com.example.catapp.presenter.view.fragments.CatFragment"
         android:label="CatFragment"
-        tools:layout="@layout/fragment_cat" >
+        tools:layout="@layout/fragment_cat">
         <action
             android:id="@+id/to_historyFragment"
             app:destination="@id/historyFragment"
@@ -20,7 +20,7 @@
         android:id="@+id/fullScreenImageFragment"
         android:name="com.example.catapp.presenter.view.fragments.FullScreenImageFragment"
         android:label="FullScreenImage"
-        tools:layout="@layout/fragment_full_screen_image" >
+        tools:layout="@layout/fragment_full_screen_image">
         <action
             android:id="@+id/back_to_historyFragment"
             app:destination="@id/historyFragment"
@@ -31,7 +31,7 @@
         android:id="@+id/historyFragment"
         android:name="com.example.catapp.presenter.view.fragments.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" >
+        tools:layout="@layout/fragment_history">
         <action
             android:id="@+id/to_fullScreenFragment"
             app:destination="@id/fullScreenImageFragment"
