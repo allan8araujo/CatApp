@@ -25,9 +25,6 @@ class FullScreenImageFragment : Fragment(R.layout.fragment_full_screen_image) {
         catFragmentsViewModel.selectedItem.value.let { catPhoto ->
             binding.deleteBtn.setOnClickListener {
                 findNavController().navigate(R.id.back_to_historyFragment)
-                val thereIsCat = catFragmentsViewModel.allCats?.value?.any { catPhoto_ ->
-                    catPhoto_.id == catPhoto?.id
-                }
                 catFragmentsViewModel.delete(catPhoto)
             }
             binding.imageFullscreen.setImageBitmap(catPhoto?.image)

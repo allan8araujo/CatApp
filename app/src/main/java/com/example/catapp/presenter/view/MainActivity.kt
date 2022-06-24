@@ -10,10 +10,11 @@ import com.example.catapp.data.Repository
 import com.example.catapp.databinding.ActivityMainBinding
 import com.example.catapp.presenter.util.MainViewModelFactory
 import com.example.catapp.presenter.viewModel.CatViewModel
+import com.example.database.CatDataBase.CatRoomDatabase.Companion.getDataBase
 
 class MainActivity : AppCompatActivity() {
 
-    private val database by lazy { com.example.database.CatDataBase.CatRoomDatabase.getDataBase(this) }
+    private val database by lazy { getDataBase(this) }
     private val viewModelGet: CatViewModel by viewModels {
         MainViewModelFactory(Repository(database.appDao()))
     }
@@ -26,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         viewModelGet.getImage()
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.activity_main_navHost) as NavHostFragment
         val navController = navHostFragment.navController

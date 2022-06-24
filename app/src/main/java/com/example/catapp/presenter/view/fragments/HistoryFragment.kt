@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.abstractions.CatPhoto
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
@@ -24,15 +25,7 @@ class HistoryFragment : Fragment() {
         val view = binding.root
         val catListAdapter = CatItemAdapter()
         catFragmentsViewModel.allCats?.observe(viewLifecycleOwner) { listCatPhoto ->
-            val listcat = listCatPhoto.sortedByDescending { catPhoto ->
-                catPhoto.id
-            }
-            catListAdapter.submitList(listcat)
-            if (catListAdapter.itemCount == 0) {
-                binding.pbLoadingHistory.visibility = View.VISIBLE
-            } else {
-                binding.pbLoadingHistory.visibility = View.GONE
-            }
+            catFragmentsViewModel.setCatList(listCatPhoto, catListAdapter, binding)
         }
 
         binding.catListRecycerview.adapter = catListAdapter
@@ -42,7 +35,7 @@ class HistoryFragment : Fragment() {
         return view
     }
 
-    private fun onClickCatList(cat: com.example.abstractions.CatPhoto) {
+    private fun onClickCatList(cat: CatPhoto) {
         findNavController().navigate(R.id.to_fullScreenFragment)
         catFragmentsViewModel.imageSelected(cat)
     }
