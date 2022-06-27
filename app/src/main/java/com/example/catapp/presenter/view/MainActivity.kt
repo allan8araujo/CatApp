@@ -14,11 +14,6 @@ import com.example.database.CatDataBase.CatRoomDatabase.Companion.getDataBase
 
 class MainActivity : AppCompatActivity() {
 
-    private val database by lazy { getDataBase(this) }
-    private val viewModelGet: CatViewModel by viewModels {
-        MainViewModelFactory(Repository(database.appDao()))
-    }
-
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -26,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        viewModelGet.getImage()
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.activity_main_navHost) as NavHostFragment
         val navController = navHostFragment.navController

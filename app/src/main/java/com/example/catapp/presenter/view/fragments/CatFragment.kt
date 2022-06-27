@@ -14,15 +14,23 @@ import androidx.core.content.FileProvider
 import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import com.example.catapp.data.Repository
 import com.example.catapp.databinding.FragmentCatBinding
+import com.example.catapp.presenter.util.MainViewModelFactory
 import com.example.catapp.presenter.viewModel.CatViewModel
+import com.example.database.CatDataBase
 import java.io.File
 import java.io.FileOutputStream
 
 class CatFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentCatBinding
     private lateinit var progressBar: ProgressBar
-    private val catViewModel: CatViewModel by activityViewModels()
+
+    private val database by lazy { CatDataBase.CatRoomDatabase.getDataBase(requireContext()) }
+    private val catViewModel: CatViewModel by activityViewModels {
+        MainViewModelFactory(Repository(database.appDao()))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +39,8 @@ class CatFragment : Fragment(), View.OnClickListener {
     ): View {
         binding = FragmentCatBinding.inflate(inflater, container, false)
         val view = binding.root
-        val progressBar = binding.pbLoading
+        progressBar = binding.pbLoading
+        catViewModel.getImage()
 
         progressBar.visibility = View.VISIBLE
         tryResponseObserve(binding, progressBar)
@@ -42,10 +51,10 @@ class CatFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == binding.buttonCatSearch.id) {
-            progressBar?.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
             catViewModel.getImage()
         }
-        if (view.id == binding.buttonCatSearch.id) {
+        if (view.id == binding.buttonCatShare.id) {
             setupIntent(binding)
         }
     }
