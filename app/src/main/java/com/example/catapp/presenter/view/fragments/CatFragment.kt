@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,8 @@ import androidx.core.content.FileProvider
 import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.catapp.R
 import com.example.catapp.data.Repository
 import com.example.catapp.databinding.FragmentCatBinding
 import com.example.catapp.presenter.util.MainViewModelFactory
@@ -65,7 +65,7 @@ class CatFragment : Fragment(), View.OnClickListener {
                 catViewModel.observeCatResponse(binding, progressBar, responseBody)
             }
         } catch (e: Exception) {
-            Log.i("@@@@@@", e.message.toString())
+            findNavController().navigate(R.id.to_historyFragment)
         }
     }
 

@@ -15,11 +15,14 @@ import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 
 class CatViewModel(private val repository: Repository) : ViewModel() {
-    val catResponse: MutableLiveData<ResponseBody> = MutableLiveData()
+    val catResponse: MutableLiveData<ResponseBody?> = MutableLiveData()
     fun getImage() {
         viewModelScope.launch {
-            val response: ResponseBody = repository.getFromApiImage()
-            catResponse.value = response
+            try {
+                val response: ResponseBody = repository.getFromApiImage()
+                catResponse.value = response
+            } catch (e: Exception) {
+            }
         }
     }
 

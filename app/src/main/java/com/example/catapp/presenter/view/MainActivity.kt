@@ -1,16 +1,11 @@
 package com.example.catapp.presenter.view
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.catapp.R
-import com.example.catapp.data.Repository
 import com.example.catapp.databinding.ActivityMainBinding
-import com.example.catapp.presenter.util.MainViewModelFactory
-import com.example.catapp.presenter.viewModel.CatViewModel
-import com.example.database.CatDataBase.CatRoomDatabase.Companion.getDataBase
 
 class MainActivity : AppCompatActivity() {
 
