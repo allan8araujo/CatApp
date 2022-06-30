@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.abstractions.CatPhoto
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
 import com.example.catapp.presenter.viewModel.CatViewModel
+import kotlinx.coroutines.launch
 
 class HistoryFragment : Fragment() {
     private val catFragmentsViewModel: CatViewModel by activityViewModels()
@@ -24,8 +26,11 @@ class HistoryFragment : Fragment() {
         val binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val view = binding.root
         val catListAdapter = CatItemAdapter()
-        catFragmentsViewModel.allCats?.observe(viewLifecycleOwner) { listCatPhoto ->
-            catFragmentsViewModel.setCatList(listCatPhoto, catListAdapter, binding)
+
+        lifecycleScope.launch {
+            catFragmentsViewModel.allCats.collect {
+                catFragmentsViewModel.setCatList(it, catListAdapter, binding)
+            }
         }
 
         binding.catListRecycerview.adapter = catListAdapter

@@ -1,16 +1,16 @@
 package com.example.database.daos
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.abstractions.CatPhoto
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CatDao {
-    @Query("SELECT * FROM cat_photos")
-    fun getCatsFromDB(): Flow<MutableList<CatPhoto>>
+    @Query("SELECT * FROM cat_photos ORDER BY id ASC")
+    fun getCatsFromDB(): PagingSource<Int, CatPhoto>
 
     @Insert
     suspend fun insertCatInDB(cat: CatPhoto?)

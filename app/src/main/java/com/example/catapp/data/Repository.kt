@@ -1,13 +1,13 @@
 package com.example.catapp.data
 
 import androidx.annotation.WorkerThread
+import androidx.paging.PagingSource
 import com.example.abstractions.CatPhoto
 import com.example.api.api.RetrofitInstance
-import kotlinx.coroutines.flow.Flow
 import okhttp3.ResponseBody
 
 class Repository(private val catDao: com.example.database.daos.CatDao?) {
-    val allCats: Flow<MutableList<CatPhoto>>? = catDao?.getCatsFromDB()
+    val allCats: PagingSource<Int, CatPhoto>? = catDao?.getCatsFromDB()
 
     @WorkerThread
     suspend fun insertInDatabase(cat: CatPhoto?) {
