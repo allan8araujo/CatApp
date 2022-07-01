@@ -8,7 +8,7 @@ import com.example.database.daos.CatDao
 import retrofit2.HttpException
 import java.io.IOException
 
-private const val STARTING_PAGE_INDEX = 1
+private const val STARTING_PAGE_INDEX = 0
 
 class CatPagingSource(private val service: CatDao) : PagingSource<Int, CatPhoto>() {
 

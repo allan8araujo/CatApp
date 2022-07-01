@@ -21,7 +21,7 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
                 LayoutInflater.from(parent.context),
                 parent, false
             )
-        return CatItemViewHolder(binding,binding_, onClickListener)
+        return CatItemViewHolder(binding, binding_, onClickListener)
     }
 
     override fun onBindViewHolder(holder: CatItemViewHolder, position: Int) {
@@ -41,6 +41,7 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
                     onClickListener?.invoke(cat!!)
                 }
                 binding_.pbLoadingHistory.visibility = View.GONE
+                Log.d("numbner of hcat",cat?.id.toString())
             } catch (e: Exception) {
                 Log.i("Erro: ", e.toString())
             }
