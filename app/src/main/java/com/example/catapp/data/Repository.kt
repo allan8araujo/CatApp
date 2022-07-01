@@ -14,9 +14,8 @@ class Repository(private val catDao: CatDao?) {
     val getAllCats: Flow<PagingData<CatPhoto>> =
         Pager(
             PagingConfig(
-                pageSize = 5,
-                enablePlaceholders = false,
-                initialLoadSize = 5
+                pageSize = 3,
+                enablePlaceholders = true,
             ),
         ) {
             CatPagingSource(catDao!!)

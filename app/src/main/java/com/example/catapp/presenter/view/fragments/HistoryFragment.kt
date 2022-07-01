@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.abstractions.CatPhoto
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
+import com.example.catapp.presenter.view.adapters.CatLoadStateAdapter
 import com.example.catapp.presenter.viewModel.CatViewModel
-import kotlinx.coroutines.launch
 
 class HistoryFragment : Fragment() {
     private val catFragmentsViewModel: CatViewModel by activityViewModels()
@@ -25,15 +25,16 @@ class HistoryFragment : Fragment() {
     ): View {
         val binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val view = binding.root
-        val catListAdapter = CatItemAdapter()
+        val catListAdapter = CatItemAdapter(binding)
 
-        lifecycleScope.launch {
-            catFragmentsViewModel.allCats.collect {
-                catFragmentsViewModel.setCatList(it, catListAdapter, binding)
-            }
+        catFragmentsViewModel.allCats.asLiveData().observe(viewLifecycleOwner) { pagingData ->
+            catFragmentsViewModel.setCatList(pagingData, catListAdapter)
+
         }
+        binding.catListRecycerview.adapter = catListAdapter.withLoadStateFooter(
+            CatLoadStateAdapter()
+        )
 
-        binding.catListRecycerview.adapter = catListAdapter
         catListAdapter.onClickListener = { imageId ->
             onClickCatList(imageId)
         }

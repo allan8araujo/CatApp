@@ -15,7 +15,8 @@ class CatPagingSource(private val service: CatDao) : PagingSource<Int, CatPhoto>
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CatPhoto> {
         val page = params.key ?: STARTING_PAGE_INDEX
         return try {
-            val response = service.getCatsFromDB(page, page * params.loadSize)
+            val response = service.getCatsFromDB(params.loadSize, page * params.loadSize)
+            Log.d("gatinho numerooo:", (page).toString())
             LoadResult.Page(
                 data = response,
                 prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
@@ -32,8 +33,8 @@ class CatPagingSource(private val service: CatDao) : PagingSource<Int, CatPhoto>
 
     override fun getRefreshKey(state: PagingState<Int, CatPhoto>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
-            val anchorPage = state.closestPageToPosition(anchorPosition)
-            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
     }
 }

@@ -2,16 +2,16 @@ package com.example.catapp.presenter.view.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.abstractions.CatPhoto
+import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.databinding.ItemCatRecyclerViewBinding
 
-class CatItemAdapter :
+class CatItemAdapter(val binding_: FragmentHistoryBinding) :
     PagingDataAdapter<CatPhoto, CatItemAdapter.CatItemViewHolder>(DIFF_CALLBACK) {
     var onClickListener: ((_cat: CatPhoto) -> Unit)? = null
 
@@ -21,7 +21,7 @@ class CatItemAdapter :
                 LayoutInflater.from(parent.context),
                 parent, false
             )
-        return CatItemViewHolder(binding, onClickListener)
+        return CatItemViewHolder(binding,binding_, onClickListener)
     }
 
     override fun onBindViewHolder(holder: CatItemViewHolder, position: Int) {
@@ -30,6 +30,7 @@ class CatItemAdapter :
 
     class CatItemViewHolder(
         private val binding: ItemCatRecyclerViewBinding,
+        val binding_: FragmentHistoryBinding,
         private val onClickListener: ((position: CatPhoto) -> Unit)?,
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -39,6 +40,7 @@ class CatItemAdapter :
                 binding.root.setOnClickListener {
                     onClickListener?.invoke(cat!!)
                 }
+                binding_.pbLoadingHistory.visibility = View.GONE
             } catch (e: Exception) {
                 Log.i("Erro: ", e.toString())
             }

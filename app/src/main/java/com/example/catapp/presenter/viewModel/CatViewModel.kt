@@ -73,15 +73,9 @@ class CatViewModel(private val repository: Repository) : ViewModel() {
     fun setCatList(
         listCatPhoto: PagingData<CatPhoto>,
         catListAdapter: CatItemAdapter,
-        binding: FragmentHistoryBinding,
     ) {
         viewModelScope.launch {
             catListAdapter.submitData(listCatPhoto)
-            if (catListAdapter.itemCount == 0) {
-                binding.pbLoadingHistory.visibility = View.VISIBLE
-            } else {
-                binding.pbLoadingHistory.visibility = View.GONE
-            }
         }
     }
 }
