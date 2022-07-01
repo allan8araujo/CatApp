@@ -1,6 +1,5 @@
 package com.example.database.daos
 
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -9,8 +8,8 @@ import com.example.abstractions.CatPhoto
 
 @Dao
 interface CatDao {
-    @Query("SELECT * FROM cat_photos ORDER BY id ASC")
-    fun getCatsFromDB(): PagingSource<Int, CatPhoto>
+    @Query("SELECT * FROM cat_photos ORDER BY id ASC LIMIT :limit OFFSET :offset")
+    suspend fun getCatsFromDB(limit: Int, offset: Int): List<CatPhoto>
 
     @Insert
     suspend fun insertCatInDB(cat: CatPhoto?)
