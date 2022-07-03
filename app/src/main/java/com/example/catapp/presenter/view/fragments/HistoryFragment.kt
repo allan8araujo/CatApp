@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.abstractions.CatPhoto
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentHistoryBinding
@@ -20,6 +21,8 @@ import kotlinx.coroutines.launch
 class HistoryFragment : Fragment() {
     private val catFragmentsViewModel: CatViewModel by activityViewModels()
     lateinit var catListAdapter: CatItemAdapter
+    lateinit var catListRecycerview: RecyclerView
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
@@ -38,13 +41,14 @@ class HistoryFragment : Fragment() {
                 catListAdapter.submitData(pagingData)
             }
         }
-
-        binding.catListRecycerview.adapter = catListAdapter.withLoadStateFooter(
+        catListRecycerview = binding.catListRecycerview
+        catListRecycerview.adapter = catListAdapter.withLoadStateFooter(
             CatLoadStateAdapter()
         )
         binding.swiperefresh.setOnRefreshListener {
             catListAdapter.refresh()
-            binding.swiperefresh.isRefreshing = false;
+            binding.swiperefresh.isRefreshing = false
+            catListRecycerview.smoothScrollToPosition(0)
         }
 //        binding.catListRecycerview.adapter = catListAdapter.withLoadStateHeader(
 //            CatLoadStateAdapter()
