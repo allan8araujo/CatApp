@@ -5,12 +5,11 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.abstractions.CatPhoto
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CatDao {
-    @Query("SELECT * FROM cat_photos")
-    fun getCatsFromDB(): Flow<MutableList<CatPhoto>>
+    @Query("SELECT * FROM cat_photos ORDER BY id DESC LIMIT :limit OFFSET :offset")
+    suspend fun getCatsFromDB(limit: Int, offset: Int): List<CatPhoto>
 
     @Insert
     suspend fun insertCatInDB(cat: CatPhoto?)

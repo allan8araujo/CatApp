@@ -93,8 +93,14 @@ dependencies {
     kapt "androidx.room:room-compiler:2.4.2"
     androidTestImplementation "androidx.room:room-testing:2.4.2"
 
+    //paging
+    def paging_version = "3.1.1"
+
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     //modules
     implementation project(path: ':abstractions')
     implementation project(path: ':api')
     implementation project(path: ':database')
+
 }
