@@ -9,23 +9,23 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.example.abstractions.CatPhoto
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
 import com.example.catapp.presenter.view.adapters.CatLoadStateAdapter
 import com.example.catapp.presenter.viewModel.CatViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class HistoryFragment : Fragment() {
     private val catFragmentsViewModel: CatViewModel by activityViewModels()
-    lateinit var catListAdapter: CatItemAdapter
-    lateinit var catListRecycerview: RecyclerView
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
+    private lateinit var catListAdapter: CatItemAdapter
+    private lateinit var catListRecycerview: RecyclerView
+    private lateinit var swiperefresh: SwipeRefreshLayout
+    private lateinit var refreshListener: OnRefreshListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,28 +36,28 @@ class HistoryFragment : Fragment() {
         val view = binding.root
         catListAdapter = CatItemAdapter(binding)
 
-        catFragmentsViewModel.allCats.observe(viewLifecycleOwner) { pagingData ->
-            lifecycleScope.launch(Dispatchers.IO) {
-                catListAdapter.submitData(pagingData)
-            }
-        }
+
         catListRecycerview = binding.catListRecycerview
         catListRecycerview.adapter = catListAdapter.withLoadStateFooter(
             CatLoadStateAdapter()
         )
-        binding.swiperefresh.setOnRefreshListener {
+
+        swiperefresh = binding.swiperefresh
+        refreshListener = OnRefreshListener {
             catListAdapter.refresh()
-            binding.swiperefresh.isRefreshing = false
-            catListRecycerview.smoothScrollToPosition(0)
+            swiperefresh.isRefreshing = false
         }
-//        binding.catListRecycerview.adapter = catListAdapter.withLoadStateHeader(
-//            CatLoadStateAdapter()
-//        ) implementar posteriomrnete o load ao deslizar pra cima
+        swiperefresh.setOnRefreshListener(refreshListener)
 
         catListAdapter.onClickListener = { imageId ->
             onClickCatList(imageId)
         }
 
+        lifecycleScope.launch {
+            catFragmentsViewModel.getDataFromRemote().collectLatest { pagingData ->
+                catListAdapter.submitData(lifecycle, pagingData)
+            }
+        }
         return view
     }
 

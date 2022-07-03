@@ -2,7 +2,10 @@ package com.example.catapp.presenter.viewModel
 
 import android.graphics.BitmapFactory
 import android.widget.ProgressBar
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.bumptech.glide.Glide
@@ -33,9 +36,15 @@ class CatViewModel(private val repository: Repository) : ViewModel() {
         mutableSelectedItem.value = SelectedCat
     }
 
-    val allCats =
-        repository.getAllCats
-            .cachedIn(viewModelScope).asLiveData()
+    private var allCats: Flow<PagingData<CatPhoto>>? = null
+
+    fun getDataFromRemote(): Flow<PagingData<CatPhoto>> {
+        val newResult =
+            repository.getAllCats
+                .cachedIn(viewModelScope)
+        allCats = newResult
+        return newResult
+    }
 
     fun insert(cat: CatPhoto?) = viewModelScope.launch {
         repository.insertInDatabase(cat)
