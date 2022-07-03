@@ -14,10 +14,15 @@ import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
 import com.example.catapp.presenter.view.adapters.CatLoadStateAdapter
 import com.example.catapp.presenter.viewModel.CatViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HistoryFragment : Fragment() {
     private val catFragmentsViewModel: CatViewModel by activityViewModels()
+    lateinit var catListAdapter: CatItemAdapter
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,21 +31,29 @@ class HistoryFragment : Fragment() {
     ): View {
         val binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val view = binding.root
-        val catListAdapter = CatItemAdapter(binding)
+        catListAdapter = CatItemAdapter(binding)
 
-        lifecycleScope.launch {
-            catFragmentsViewModel.allCats.collect { pagingData ->
-                catFragmentsViewModel.setCatList(pagingData, catListAdapter)
+        catFragmentsViewModel.allCats.observe(viewLifecycleOwner) { pagingData ->
+            lifecycleScope.launch(Dispatchers.IO) {
+                catListAdapter.submitData(pagingData)
             }
         }
 
         binding.catListRecycerview.adapter = catListAdapter.withLoadStateFooter(
             CatLoadStateAdapter()
         )
+        binding.swiperefresh.setOnRefreshListener {
+            catListAdapter.refresh()
+            binding.swiperefresh.isRefreshing = false;
+        }
+//        binding.catListRecycerview.adapter = catListAdapter.withLoadStateHeader(
+//            CatLoadStateAdapter()
+//        ) implementar posteriomrnete o load ao deslizar pra cima
 
         catListAdapter.onClickListener = { imageId ->
             onClickCatList(imageId)
         }
+
         return view
     }
 

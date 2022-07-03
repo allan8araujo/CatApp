@@ -33,8 +33,8 @@ class CatPagingSource(private val service: CatDao) : PagingSource<Int, CatPhoto>
 
     override fun getRefreshKey(state: PagingState<Int, CatPhoto>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
-                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 }

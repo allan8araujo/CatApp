@@ -11,11 +11,12 @@ import kotlinx.coroutines.flow.Flow
 import okhttp3.ResponseBody
 
 class Repository(private val catDao: CatDao?) {
-    val getAllCats: Flow<PagingData<CatPhoto>> =
+    val getAllCats =
         Pager(
             PagingConfig(
-                pageSize = 3,
+                pageSize = 6,
                 enablePlaceholders = true,
+                initialLoadSize = 6
             ),
         ) {
             CatPagingSource(catDao!!)

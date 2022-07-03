@@ -2,17 +2,13 @@ package com.example.catapp.presenter.viewModel
 
 import android.graphics.BitmapFactory
 import android.widget.ProgressBar
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.bumptech.glide.Glide
 import com.example.abstractions.CatPhoto
 import com.example.catapp.data.Repository
 import com.example.catapp.databinding.FragmentCatBinding
-import com.example.catapp.presenter.view.adapters.CatItemAdapter
 import com.example.catapp.presenter.view.adapters.ProgressBarListener
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -37,13 +33,9 @@ class CatViewModel(private val repository: Repository) : ViewModel() {
         mutableSelectedItem.value = SelectedCat
     }
 
-    private val liveList: Flow<PagingData<CatPhoto>> =
+    val allCats =
         repository.getAllCats
-            .cachedIn(
-                viewModelScope
-            )
-
-    val allCats: Flow<PagingData<CatPhoto>> = liveList
+            .cachedIn(viewModelScope).asLiveData()
 
     fun insert(cat: CatPhoto?) = viewModelScope.launch {
         repository.insertInDatabase(cat)
@@ -66,12 +58,5 @@ class CatViewModel(private val repository: Repository) : ViewModel() {
             .centerCrop()
             .listener(ProgressBarListener(progressBar, this))
             .into(binding.imgCat)
-    }
-
-    suspend fun setCatList(
-        listCatPhoto: PagingData<CatPhoto>,
-        catListAdapter: CatItemAdapter,
-    ) {
-        catListAdapter.submitData(listCatPhoto)
     }
 }

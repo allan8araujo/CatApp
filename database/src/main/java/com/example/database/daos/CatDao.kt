@@ -8,7 +8,7 @@ import com.example.abstractions.CatPhoto
 
 @Dao
 interface CatDao {
-    @Query("SELECT * FROM cat_photos ORDER BY id ASC LIMIT :limit OFFSET :offset")
+    @Query("SELECT * FROM cat_photos ORDER BY id DESC LIMIT :limit OFFSET :offset")
     suspend fun getCatsFromDB(limit: Int, offset: Int): List<CatPhoto>
 
     @Insert
