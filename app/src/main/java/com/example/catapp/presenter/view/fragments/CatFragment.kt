@@ -72,27 +72,14 @@ class CatFragment : Fragment(), View.OnClickListener {
     /** this need to be here, intent is view responsability**/
 
     private fun setupIntent(binding: FragmentCatBinding) {
-        val contentUri = getCatUri(binding.imgCat.drawToBitmap())
+        val imageFolder = File((activity as AppCompatActivity).cacheDir, "images")
+        val file = catViewModel.getCatUri(binding.imgCat.drawToBitmap(),imageFolder)
+        val contentUri = FileProvider.getUriForFile(requireActivity(), "com.example.catapp.fileprovider", file)
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "image/png"
         intent.putExtra(Intent.EXTRA_SUBJECT, "Compartilhe o gato!")
         intent.putExtra(Intent.EXTRA_STREAM, contentUri)
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         startActivity(Intent.createChooser(intent, "Compartilhe via: "))
-    }
-
-    private fun getCatUri(bitmap: Bitmap): Uri? {
-        val imageFolder = File((activity as AppCompatActivity).cacheDir, "images")
-        var contentUri: Uri? = null
-
-        imageFolder.mkdir()
-        val file = File(imageFolder, "shared_image.png")
-        val stream = FileOutputStream(file)
-        bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream)
-        stream.flush()
-        stream.close()
-        contentUri =
-            FileProvider.getUriForFile(requireActivity(), "com.example.catapp.fileprovider", file)
-        return contentUri
     }
 }
