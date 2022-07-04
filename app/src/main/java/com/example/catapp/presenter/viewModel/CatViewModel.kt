@@ -2,10 +2,7 @@ package com.example.catapp.presenter.viewModel
 
 import android.graphics.BitmapFactory
 import android.widget.ProgressBar
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.abstractions.CatPhoto
 import com.example.catapp.data.Repository
 import com.example.catapp.databinding.FragmentCatBinding
+import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
 import com.example.catapp.presenter.view.adapters.CatLoadStateAdapter
 import com.example.catapp.presenter.view.adapters.ProgressBarListener
@@ -89,7 +87,6 @@ class CatViewModel(private val repository: Repository) : ViewModel() {
             swiperefresh.isRefreshing = false
         }
     }
-
     fun submitDataOnAdapter(catFragmentsViewModel: CatViewModel, catListAdapter: CatItemAdapter) {
         viewModelScope.launch {
             catFragmentsViewModel.getDataFromRemote().collectLatest { pagingData ->
