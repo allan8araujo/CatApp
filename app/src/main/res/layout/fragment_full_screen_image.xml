@@ -7,7 +7,7 @@
     tools:context=".presenter.view.fragments.FullScreenImageFragment">
 
     <ImageView
-        android:id="@+id/image_fullscreen"
+        android:id="@+id/fullscreen_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -20,25 +20,36 @@
         tools:src="@tools:sample/avatars" />
 
     <ImageButton
-        android:id="@+id/back_to_list"
+        android:id="@+id/back_to_list_button"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/round_button"
+        android:background="@drawable/round_button_grey"
         android:src="@drawable/left_arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/delete_btn"
+        android:id="@+id/share_button"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="20dp"
-        android:background="@drawable/round_button"
+        android:background="@drawable/round_button_grey"
+        android:src="@drawable/ic_baseline_share_24"
+        app:layout_constraintBottom_toBottomOf="@+id/delete_button"
+        app:layout_constraintStart_toEndOf="@+id/delete_button" />
+
+    <ImageButton
+        android:id="@+id/delete_button"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/round_button_grey"
         android:src="@drawable/ic_baseline_delete_24"
-        app:layout_constraintBottom_toBottomOf="@+id/back_to_list"
-        app:layout_constraintStart_toEndOf="@+id/back_to_list" />
+        app:layout_constraintBottom_toBottomOf="@+id/back_to_list_button"
+        app:layout_constraintStart_toEndOf="@+id/back_to_list_button"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
