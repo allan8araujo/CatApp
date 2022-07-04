@@ -69,6 +69,8 @@ class CatFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    /** this need to be here, intent is view responsability**/
+
     private fun setupIntent(binding: FragmentCatBinding) {
         val contentUri = getCatUri(binding.imgCat.drawToBitmap())
         val intent = Intent(Intent.ACTION_SEND)
