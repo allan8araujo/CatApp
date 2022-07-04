@@ -6,6 +6,7 @@ import androidx.paging.PagingConfig
 import com.example.abstractions.CatPhoto
 import com.example.api.api.RetrofitInstance
 import com.example.database.daos.CatDao
+import com.example.database.paging.CatPagingSource
 import okhttp3.ResponseBody
 
 class Repository(private val catDao: CatDao?) {

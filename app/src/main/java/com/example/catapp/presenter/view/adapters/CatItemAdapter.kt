@@ -41,7 +41,7 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
                     onClickListener?.invoke(cat!!)
                 }
                 binding_.pbLoadingHistory.visibility = View.GONE
-                Log.d("numbner of hcat",cat?.id.toString())
+                Log.d("numbner of hcat", cat?.id.toString())
             } catch (e: Exception) {
                 Log.i("Erro: ", e.toString())
             }

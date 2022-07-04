@@ -1,11 +1,10 @@
-package com.example.catapp.data
+package com.example.database.paging
 
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.abstractions.CatPhoto
 import com.example.database.daos.CatDao
-import retrofit2.HttpException
 import java.io.IOException
 
 private const val STARTING_PAGE_INDEX = 0
@@ -23,9 +22,6 @@ class CatPagingSource(private val service: CatDao) : PagingSource<Int, CatPhoto>
                 nextKey = if (response.isEmpty()) null else page + 1
             )
         } catch (exception: IOException) {
-            Log.d("Error kekw", exception.toString())
-            return LoadResult.Error(exception)
-        } catch (exception: HttpException) {
             Log.d("Error kekw", exception.toString())
             return LoadResult.Error(exception)
         }

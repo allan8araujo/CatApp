@@ -8,12 +8,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.example.abstractions.CatPhoto
 import com.example.catapp.data.Repository
 import com.example.catapp.databinding.FragmentCatBinding
+import com.example.catapp.presenter.view.adapters.CatItemAdapter
+import com.example.catapp.presenter.view.adapters.CatLoadStateAdapter
 import com.example.catapp.presenter.view.adapters.ProgressBarListener
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 
@@ -67,5 +72,29 @@ class CatViewModel(private val repository: Repository) : ViewModel() {
             .centerCrop()
             .listener(ProgressBarListener(progressBar, this))
             .into(binding.imgCat)
+    }
+
+    fun settingRecyclerView(
+        catListRecycerview: RecyclerView,
+        catListAdapter: CatItemAdapter,
+    ) {
+        catListRecycerview.adapter = catListAdapter.withLoadStateFooter(
+            CatLoadStateAdapter()
+        )
+    }
+
+    fun settingSwipeRefresh(swiperefresh: SwipeRefreshLayout, catListAdapter: CatItemAdapter) {
+        swiperefresh.setOnRefreshListener {
+            catListAdapter.refresh()
+            swiperefresh.isRefreshing = false
+        }
+    }
+
+    fun submitDataOnAdapter(catFragmentsViewModel: CatViewModel, catListAdapter: CatItemAdapter) {
+        viewModelScope.launch {
+            catFragmentsViewModel.getDataFromRemote().collectLatest { pagingData ->
+                catListAdapter.submitData(pagingData)
+            }
+        }
     }
 }
