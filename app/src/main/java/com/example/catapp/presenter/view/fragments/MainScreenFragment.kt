@@ -17,14 +17,14 @@ import com.example.catapp.data.Repository
 import com.example.catapp.databinding.FragmentCatBinding
 import com.example.catapp.presenter.util.MainViewModelFactory
 import com.example.catapp.presenter.viewModel.MainScreenViewModel
-import com.example.database.CatDataBase
+import com.example.database.CatDataBaseInstance
 import java.io.File
 
 class MainScreenFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentCatBinding
     private lateinit var progressBar: ProgressBar
 
-    private val database by lazy { CatDataBase.CatRoomDatabase.getDataBase(requireContext()) }
+    private val database by lazy { CatDataBaseInstance.CatRoomDatabase.getDataBase(requireContext()) }
     private val catViewModel: MainScreenViewModel by activityViewModels {
         MainViewModelFactory(Repository(database.appDao()))
     }

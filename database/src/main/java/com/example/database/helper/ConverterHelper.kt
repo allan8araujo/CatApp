@@ -1,11 +1,11 @@
-package com.example.database
+package com.example.database.helper
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.room.TypeConverter
 import java.io.ByteArrayOutputStream
 
-class Converters {
+class ConverterHelper {
     @TypeConverter
     fun fromBitmap(bitmap: Bitmap?): ByteArray {
         val outputStream = ByteArrayOutputStream()

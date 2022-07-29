@@ -6,15 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.database.daos.CatDao
+import com.example.database.helper.ConverterHelper
 
-class CatDataBase {
+class CatDataBaseInstance {
 
     @Database(
         entities = [com.example.abstractions.CatPhoto::class],
         version = 1,
         exportSchema = false
     )
-    @TypeConverters(Converters::class)
+    @TypeConverters(ConverterHelper::class)
     abstract class CatRoomDatabase : RoomDatabase() {
         abstract fun appDao(): CatDao
 
