@@ -16,11 +16,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentFullScreenImageBinding
-import com.example.catapp.presenter.viewModel.CatViewModel
+import com.example.catapp.presenter.viewModel.MainScreenViewModel
 import java.io.File
 
 class FullScreenImageFragment : Fragment(R.layout.fragment_full_screen_image) {
-    private val catFragmentsViewModel: CatViewModel by activityViewModels()
+    private val catFragmentsViewModel: MainScreenViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

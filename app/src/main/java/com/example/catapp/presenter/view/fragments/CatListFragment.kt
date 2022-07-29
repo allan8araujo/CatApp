@@ -12,10 +12,10 @@ import com.example.abstractions.CatPhoto
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentHistoryBinding
 import com.example.catapp.presenter.view.adapters.CatItemAdapter
-import com.example.catapp.presenter.viewModel.CatViewModel
+import com.example.catapp.presenter.viewModel.MainScreenViewModel
 
-class HistoryFragment : Fragment() {
-    private val catFragmentsViewModel: CatViewModel by activityViewModels()
+class CatListFragment : Fragment() {
+    private val catFragmentsViewModel: MainScreenViewModel by activityViewModels()
     private lateinit var catListAdapter: CatItemAdapter
     private lateinit var catListRecycerview: RecyclerView
 

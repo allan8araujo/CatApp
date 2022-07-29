@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/catFragment"
-        android:name="com.example.catapp.presenter.view.fragments.CatFragment"
+        android:name="com.example.catapp.presenter.view.fragments.MainScreenFragment"
         android:label="CatFragment"
         tools:layout="@layout/fragment_cat">
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.catapp.presenter.view.fragments.HistoryFragment"
+        android:name="com.example.catapp.presenter.view.fragments.CatListFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history">
         <action

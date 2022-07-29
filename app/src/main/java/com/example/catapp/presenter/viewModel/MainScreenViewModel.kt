@@ -25,7 +25,7 @@ import okhttp3.ResponseBody
 import java.io.File
 import java.io.FileOutputStream
 
-class CatViewModel(private val repository: Repository) : ViewModel() {
+class MainScreenViewModel(private val repository: Repository) : ViewModel() {
     val catResponse: MutableLiveData<ResponseBody?> = MutableLiveData()
     fun getImage() {
         viewModelScope.launch {
@@ -93,7 +93,7 @@ class CatViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun submitDataOnAdapter(catFragmentsViewModel: CatViewModel, catListAdapter: CatItemAdapter) {
+    fun submitDataOnAdapter(catFragmentsViewModel: MainScreenViewModel, catListAdapter: CatItemAdapter) {
         viewModelScope.launch {
             catFragmentsViewModel.getDataFromRemote().collectLatest { pagingData ->
                 catListAdapter.submitData(pagingData)

@@ -9,11 +9,11 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.abstractions.CatPhoto
-import com.example.catapp.presenter.viewModel.CatViewModel
+import com.example.catapp.presenter.viewModel.MainScreenViewModel
 
 class ProgressBarListener(
     private val progressbar: ProgressBar,
-    private val catViewModel: CatViewModel,
+    private val catViewModel: MainScreenViewModel,
 ) :
     RequestListener<Drawable?> {
 
