@@ -29,7 +29,7 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
 
     class CatItemViewHolder(
         private val binding: ItemCatRecyclerViewBinding,
-        val binding_: FragmentHistoryBinding,
+        private val bindingHistBinding: FragmentHistoryBinding,
         private val onClickListener: ((position: CatPhoto) -> Unit)?,
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -39,9 +39,9 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
                 binding.root.setOnClickListener {
                     onClickListener?.invoke(cat!!)
                 }
-                binding_.pbLoadingHistory.visibility = View.GONE
+                bindingHistBinding.pbLoadingHistory.visibility = View.GONE
             } catch (e: Exception) {
-                //TODO catch exception
+                // unused
             }
         }
     }

@@ -37,7 +37,10 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
         val view = binding.root
         binding = FragmentCatBinding.inflate(inflater, container, false)
         setupProgressBar()
-        tryResponseObserve(binding, progressBar)
+        tryResponseObserve(
+            binding = binding,
+            progressBar = progressBar
+        )
         setClickListener()
         return view
     }
@@ -66,7 +69,11 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
     private fun tryResponseObserve(binding: FragmentCatBinding, progressBar: ProgressBar) {
         try {
             catViewModel.catResponse.observe(viewLifecycleOwner) { responseBody ->
-                catViewModel.observeCatResponse(binding, progressBar, responseBody)
+                catViewModel.observeCatResponse(
+                    binding = binding,
+                    progressBar = progressBar,
+                    responseBody = responseBody
+                )
             }
         } catch (e: Exception) {
             findNavController().navigate(R.id.to_historyFragment)

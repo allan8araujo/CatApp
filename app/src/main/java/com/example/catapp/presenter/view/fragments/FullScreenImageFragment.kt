@@ -36,7 +36,10 @@ class FullScreenImageFragment : Fragment(R.layout.fragment_full_screen_image) {
         val backToListButton = binding.backToListButton
         val shareButton = binding.shareButton
 
-        setupDeleteButton(fullscreenImage, deleteButton)
+        setupDeleteButton(
+            fullscreenImage = fullscreenImage,
+            deleteButton = deleteButton
+        )
         backToListButton.setOnClickListener {
             findNavController().navigate(R.id.back_to_historyFragment)
         }
