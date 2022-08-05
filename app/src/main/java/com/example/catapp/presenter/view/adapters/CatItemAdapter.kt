@@ -1,6 +1,5 @@
 package com.example.catapp.presenter.view.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,9 +40,8 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
                     onClickListener?.invoke(cat!!)
                 }
                 binding_.pbLoadingHistory.visibility = View.GONE
-                Log.d("numbner of hcat", cat?.id.toString())
             } catch (e: Exception) {
-                Log.i("Erro: ", e.toString())
+                //TODO catch exception
             }
         }
     }

@@ -7,7 +7,7 @@
     tools:context=".presenter.view.fragments.FullScreenImageFragment">
 
     <ImageView
-        android:id="@+id/fullscreen_image"
+        android:id="@+id/cat_image_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
