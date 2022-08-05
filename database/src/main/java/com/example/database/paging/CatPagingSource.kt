@@ -13,7 +13,10 @@ class CatPagingSource(private val service: CatDao) : PagingSource<Int, CatPhoto>
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CatPhoto> {
         val page = params.key ?: STARTING_PAGE_INDEX
         return try {
-            val response = service.getCatsFromDB(params.loadSize, page * params.loadSize)
+            val response = service.getCatsFromDB(
+                limit = params.loadSize,
+                offset = page * params.loadSize
+            )
             LoadResult.Page(
                 data = response,
                 prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
