@@ -34,16 +34,23 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentCatBinding.inflate(inflater, container, false)
         val view = binding.root
+        binding = FragmentCatBinding.inflate(inflater, container, false)
+        setupProgressBar()
+        tryResponseObserve(binding, progressBar)
+        setClickListener()
+        return view
+    }
+
+    private fun setupProgressBar() {
         progressBar = binding.pbLoading
         catViewModel.getImage()
-
         progressBar.visibility = View.VISIBLE
-        tryResponseObserve(binding, progressBar)
+    }
+
+    private fun setClickListener() {
         binding.buttonCatSearch.setOnClickListener(this)
         binding.buttonCatShare.setOnClickListener(this)
-        return view
     }
 
     override fun onClick(view: View) {
@@ -70,8 +77,9 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
 
     private fun setupIntent(binding: FragmentCatBinding) {
         val imageFolder = File((activity as AppCompatActivity).cacheDir, "images")
-        val file = catViewModel.getCatUri(binding.imgCat.drawToBitmap(),imageFolder)
-        val contentUri = FileProvider.getUriForFile(requireActivity(), "com.example.catapp.fileprovider", file)
+        val file = catViewModel.getCatUri(binding.imgCat.drawToBitmap(), imageFolder)
+        val contentUri =
+            FileProvider.getUriForFile(requireActivity(), "com.example.catapp.fileprovider", file)
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "image/png"
         intent.putExtra(Intent.EXTRA_SUBJECT, "Compartilhe o gato!")
