@@ -39,7 +39,7 @@ class MainScreenViewModel(private val repository: Repository) : ViewModel() {
 
     // Fullscreen vm
     private val mutableSelectedItem = MutableLiveData<CatPhoto>()
-    val selectedItem: LiveData<CatPhoto> get() = mutableSelectedItem
+    val itemSelected: LiveData<CatPhoto> get() = mutableSelectedItem
     fun imageSelected(SelectedCat: CatPhoto) {
         mutableSelectedItem.value = SelectedCat
     }

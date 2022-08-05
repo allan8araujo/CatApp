@@ -1,6 +1,5 @@
 package com.example.catapp.presenter.view.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +29,7 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
 
     class CatItemViewHolder(
         private val binding: ItemCatRecyclerViewBinding,
-        val binding_: FragmentHistoryBinding,
+        private val bindingHistBinding: FragmentHistoryBinding,
         private val onClickListener: ((position: CatPhoto) -> Unit)?,
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -40,10 +39,9 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
                 binding.root.setOnClickListener {
                     onClickListener?.invoke(cat!!)
                 }
-                binding_.pbLoadingHistory.visibility = View.GONE
-                Log.d("numbner of hcat", cat?.id.toString())
+                bindingHistBinding.pbLoadingHistory.visibility = View.GONE
             } catch (e: Exception) {
-                Log.i("Erro: ", e.toString())
+                // unused
             }
         }
     }

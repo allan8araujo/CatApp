@@ -28,14 +28,17 @@ class CatListFragment : Fragment() {
         val view = binding.root
         catListAdapter = CatItemAdapter(binding)
         catListRecycerview = binding.catListRecycerview
-        catFragmentsViewModel.settingRecyclerView(catListRecycerview, catListAdapter)
-        catFragmentsViewModel.settingSwipeRefresh(binding.swiperefresh, catListAdapter)
-        catFragmentsViewModel.submitDataOnAdapter(catFragmentsViewModel, catListAdapter)
+        setupRecyclerView(binding)
         catListAdapter.onClickListener = { imageId ->
             onClickCatList(imageId)
         }
-
         return view
+    }
+
+    private fun setupRecyclerView(binding: FragmentHistoryBinding) {
+        catFragmentsViewModel.settingRecyclerView(catListRecycerview, catListAdapter)
+        catFragmentsViewModel.settingSwipeRefresh(binding.swiperefresh, catListAdapter)
+        catFragmentsViewModel.submitDataOnAdapter(catFragmentsViewModel, catListAdapter)
     }
 
     private fun onClickCatList(cat: CatPhoto) {
