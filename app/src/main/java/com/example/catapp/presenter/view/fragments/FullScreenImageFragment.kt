@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
@@ -30,23 +32,32 @@ class FullScreenImageFragment : Fragment(R.layout.fragment_full_screen_image) {
         val binding = FragmentFullScreenImageBinding.inflate(inflater, container, false)
         val view = binding.root
         val fullscreenImage = binding.catImageView
+        val deleteButton = binding.deleteButton
+        val backToListButton = binding.backToListButton
+        val shareButton = binding.shareButton
 
-        catFragmentsViewModel.selectedItem.value.let { catPhoto ->
-            val dialogClickListener = setupDialogOnDelete(catPhoto)
-            fullscreenImage.setImageBitmap(catPhoto?.image)
-            binding.deleteButton.setOnClickListener {
-                setupDialogClickListener(dialogClickListener)
-            }
-        }
-
-        binding.backToListButton.setOnClickListener {
+        setupDeleteButton(fullscreenImage, deleteButton)
+        backToListButton.setOnClickListener {
             findNavController().navigate(R.id.back_to_historyFragment)
         }
-        binding.shareButton.setOnClickListener {
+        shareButton.setOnClickListener {
             setupIntent(binding)
         }
 
         return view
+    }
+
+    private fun setupDeleteButton(
+        fullscreenImage: ImageView,
+        deleteButton: ImageButton,
+    ) {
+        catFragmentsViewModel.itemSelected.value.let { catPhoto ->
+            val dialogClickListener = setupDialogOnDelete(catPhoto)
+            fullscreenImage.setImageBitmap(catPhoto?.image)
+            deleteButton.setOnClickListener {
+                setupDialogClickListener(dialogClickListener)
+            }
+        }
     }
 
     private fun setupDialogClickListener(dialogClickListener: DialogInterface.OnClickListener) {
