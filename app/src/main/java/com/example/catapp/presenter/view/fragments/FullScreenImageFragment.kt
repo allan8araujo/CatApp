@@ -19,6 +19,7 @@ import com.example.abstractions.CatPhoto
 import com.example.catapp.R
 import com.example.catapp.databinding.FragmentFullScreenImageBinding
 import com.example.catapp.presenter.viewModel.MainScreenViewModel
+import com.google.android.material.button.MaterialButton
 import java.io.File
 
 class FullScreenImageFragment : Fragment(R.layout.fragment_full_screen_image) {
@@ -52,7 +53,7 @@ class FullScreenImageFragment : Fragment(R.layout.fragment_full_screen_image) {
 
     private fun setupDeleteButton(
         fullscreenImage: ImageView,
-        deleteButton: ImageButton,
+        deleteButton: MaterialButton,
     ) {
         catFragmentsViewModel.itemSelected.value.let { catPhoto ->
             val dialogClickListener = setupDialogOnDelete(catPhoto)

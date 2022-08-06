@@ -16,40 +16,50 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:src="@tools:sample/avatars" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/back_to_list_button"
+        style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/round_button_grey"
-        android:src="@drawable/left_arrow"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#40000000"
+        app:icon="@drawable/left_arrow"
+        app:iconSize="32dp"
+        app:iconTint="@color/white"
+        app:iconGravity="textEnd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/share_button"
+        style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/round_button_grey"
-        android:src="@drawable/ic_baseline_share_24"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="#40000000"
+        app:icon="@drawable/ic_baseline_share_24"
+        app:iconSize="32dp"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/delete_button"
         app:layout_constraintStart_toEndOf="@+id/delete_button" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/delete_button"
+        style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/round_button_grey"
-        android:src="@drawable/ic_baseline_delete_24"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="#40000000"
+        app:icon="@drawable/ic_baseline_delete_24"
+        app:iconGravity="textEnd"
+        app:iconSize="32dp"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/back_to_list_button"
-        app:layout_constraintStart_toEndOf="@+id/back_to_list_button"
-        />
+        app:layout_constraintStart_toEndOf="@+id/back_to_list_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
