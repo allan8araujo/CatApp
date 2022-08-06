@@ -16,7 +16,7 @@
     </style>
 
     <style name="rounded_image_style" parent="">
-        <item name="cornerSize">8%</item>
+        <item name="cornerSize">4%</item>
     </style>
 
 </resources>
