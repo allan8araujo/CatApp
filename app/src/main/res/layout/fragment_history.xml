@@ -28,13 +28,11 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/pbLoading_history"
-        style="?android:attr/progressBarStyle"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:fromDegrees="0"
-        android:toDegrees="1080"
+        android:indeterminate="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
