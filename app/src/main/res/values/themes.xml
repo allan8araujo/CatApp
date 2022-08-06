@@ -15,4 +15,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="rounded_image_style" parent="">
+        <item name="cornerSize">8%</item>
+    </style>
+
 </resources>

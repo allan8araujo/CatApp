@@ -8,6 +8,7 @@
 
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:layout_margin="8dp"
         android:id="@+id/imgCat"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -17,7 +18,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        app:shapeAppearanceOverlay="@style/rounded_image_style"
+        />
 
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -30,13 +33,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_cat_search"
         android:layout_width="178dp"
         android:layout_height="64dp"
         android:layout_gravity="center"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/round_button"
+        android:backgroundTint="@color/custom_purple"
+        app:cornerRadius="32dp"
         android:text="@string/hitme"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -45,14 +49,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_cat_share"
+        style="@style/Widget.Material3.Button.IconButton"
+        app:iconGravity="textEnd"
+        app:iconSize="32dp"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_gravity="center"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/round_button"
-        android:src="@drawable/ic_baseline_share_24"
+        android:backgroundTint="@color/custom_purple"
+        app:icon="@drawable/ic_baseline_share_24"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_cat_search" />
