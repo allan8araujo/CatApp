@@ -34,8 +34,8 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val view = binding.root
         binding = FragmentCatBinding.inflate(inflater, container, false)
+        val view = binding.root
         setupProgressBar()
         tryResponseObserve(
             binding = binding,
