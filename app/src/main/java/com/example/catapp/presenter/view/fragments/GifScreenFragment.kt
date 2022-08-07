@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.catapp.R
+import com.example.catapp.presenter.viewModel.GifScreenViewModel
 
 class GifScreenFragment : Fragment() {
 

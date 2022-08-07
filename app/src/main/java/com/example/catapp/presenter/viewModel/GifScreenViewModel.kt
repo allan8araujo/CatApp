@@ -1,4 +1,4 @@
-package com.example.catapp.presenter.view.fragments
+package com.example.catapp.presenter.viewModel
 
 import androidx.lifecycle.ViewModel
 
