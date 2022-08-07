@@ -49,6 +49,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.5.0'
 
     implementation 'androidx.paging:paging-common-ktx:3.1.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //Fragments
     def fragment_version = '1.5.0'

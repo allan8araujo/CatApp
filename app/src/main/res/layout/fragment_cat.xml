@@ -57,7 +57,7 @@
         android:layout_height="64dp"
         android:layout_marginBottom="28dp"
         android:backgroundTint="@color/custom_purple"
-        app:icon="@drawable/ic_baseline_share_24"
+        app:icon="@drawable/ic_share_24"
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

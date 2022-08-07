@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/catFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="cat" />
+        android:id="@+id/imgCatFragment"
+        android:icon="@drawable/ic_dashboard_24dp"
+        android:title="image" />
+
+    <item
+        android:id="@+id/gifCatFragment"
+        android:icon="@drawable/ic_gif_24"
+        android:title="gif" />
+
     <item
         android:id="@+id/historyFragment"
         android:icon="@drawable/arrow_right"
         android:title="history" />
+
 </menu>

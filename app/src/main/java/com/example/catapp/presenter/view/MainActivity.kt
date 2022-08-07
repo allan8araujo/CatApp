@@ -25,11 +25,17 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNavBar, navController)
 
-        binding.bottomNavBar.setOnClickListener {
-            if (it.id == R.id.catFragment) {
-                navController.navigate(R.id.catFragment)
-            } else if (it.id == R.id.historyFragment) {
-                navController.navigate(R.id.to_historyFragment)
+        binding.bottomNavBar.setOnClickListener { clickedItem ->
+            when (clickedItem.id) {
+                R.id.imgCatFragment -> {
+                    navController.navigate(R.id.imgCatFragment)
+                }
+                R.id.historyFragment -> {
+                    navController.navigate(R.id.to_historyFragment)
+                }
+                R.id.gifCatFragment -> {
+                    //TODO do it here a navigation for gif Fragment
+                }
             }
         }
     }
