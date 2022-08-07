@@ -43,10 +43,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //Room
-    implementation "androidx.room:room-runtime:2.4.2"
-    implementation "androidx.room:room-ktx:2.4.2"
-    kapt "androidx.room:room-compiler:2.4.2"
-    androidTestImplementation "androidx.room:room-testing:2.4.2"
+    implementation "androidx.room:room-runtime:2.4.3"
+    implementation "androidx.room:room-ktx:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+    androidTestImplementation "androidx.room:room-testing:2.4.3"
 
     //module
     implementation project(path: ':abstractions')
@@ -55,5 +55,5 @@ dependencies {
     def paging_version = "3.1.1"
 
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    implementation "androidx.room:room-paging:2.4.2"
+    implementation "androidx.room:room-paging:2.4.3"
 }
