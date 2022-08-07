@@ -15,6 +15,11 @@
             app:destination="@id/historyFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/imgCatFragment_to_gifScreenFragment"
+            app:destination="@id/gifScreenFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/fullScreenImageFragment"
@@ -38,4 +43,9 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
+    <fragment
+        android:id="@+id/gifScreenFragment"
+        android:name="com.example.catapp.presenter.view.fragments.GifScreenFragment"
+        android:label="fragment_gif_screen"
+        tools:layout="@layout/fragment_gif_screen" />
 </navigation>
