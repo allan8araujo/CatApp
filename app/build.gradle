@@ -42,11 +42,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.mediarouter:mediarouter:1.3.0'
+    implementation 'androidx.mediarouter:mediarouter:1.3.1'
     implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
-    implementation 'androidx.navigation:navigation-fragment:2.5.0'
 
     implementation 'androidx.paging:paging-common-ktx:3.1.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -61,7 +58,7 @@ dependencies {
 
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
     // ViewModel e LiveData
     def lifecycle_version = '2.6.0-alpha01'
 
@@ -99,7 +96,6 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
-    implementation 'com.google.android.material:material:1.3.0-alpha02'
     //modules
     implementation project(path: ':abstractions')
     implementation project(path: ':api')
