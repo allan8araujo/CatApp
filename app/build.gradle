@@ -50,15 +50,14 @@ dependencies {
 
     //Fragments
     def fragment_version = '1.5.0'
-
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
     // Navigation
     def nav_version = '2.5.0'
-
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "androidx.navigation:navigation-fragment:$nav_version"
+
     // ViewModel e LiveData
     def lifecycle_version = '2.6.0-alpha01'
 

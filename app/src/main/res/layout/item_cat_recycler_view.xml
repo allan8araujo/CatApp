@@ -6,8 +6,7 @@
     android:layout_margin="4dp"
     android:backgroundTint="@color/custom_light_purple"
     app:cardPreventCornerOverlap="true"
-    android:layout_gravity="center"
-    >
+    android:layout_gravity="center">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_cat"
@@ -15,5 +14,5 @@
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img"
-        app:shapeAppearanceOverlay="@style/rounded_image_style"/>
+        app:shapeAppearanceOverlay="@style/rounded_image_style" />
 </androidx.cardview.widget.CardView>

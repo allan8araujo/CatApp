@@ -93,7 +93,10 @@ class MainScreenViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun submitDataOnAdapter(catFragmentsViewModel: MainScreenViewModel, catListAdapter: CatItemAdapter) {
+    fun submitDataOnAdapter(
+        catFragmentsViewModel: MainScreenViewModel,
+        catListAdapter: CatItemAdapter
+    ) {
         viewModelScope.launch {
             catFragmentsViewModel.getDataFromRemote().collectLatest { pagingData ->
                 catListAdapter.submitData(pagingData)
@@ -102,7 +105,6 @@ class MainScreenViewModel(private val repository: Repository) : ViewModel() {
     }
 
     fun getCatUri(bitmap: Bitmap, imageFolder: File): File {
-        imageFolder.mkdir()
         val file = File(imageFolder, "shared_image.png")
         val stream = FileOutputStream(file)
         bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream)

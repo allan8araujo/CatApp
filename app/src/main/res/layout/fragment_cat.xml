@@ -19,8 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars"
-        app:shapeAppearanceOverlay="@style/rounded_image_style"
-        />
+        app:shapeAppearanceOverlay="@style/rounded_image_style" />
 
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
