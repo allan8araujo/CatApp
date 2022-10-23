@@ -3,6 +3,7 @@ package com.example.catapp.presenter.view.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -39,7 +40,7 @@ class CatItemAdapter(val binding_: FragmentHistoryBinding) :
                 binding.root.setOnClickListener {
                     onClickListener?.invoke(cat!!)
                 }
-                bindingHistBinding.pbLoadingHistory.visibility = View.GONE
+                bindingHistBinding.pbLoadingHistory.isVisible = false
             } catch (e: Exception) {
                 // unused
             }

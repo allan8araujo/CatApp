@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ProgressBar
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.isVisible
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
@@ -34,7 +35,7 @@ class ProgressBarListener(
         isFirstResource: Boolean,
     ): Boolean {
         getBitmapFromResource(resource)
-        progressbar.visibility = View.GONE
+        progressbar.isVisible = false
         return false
     }
 

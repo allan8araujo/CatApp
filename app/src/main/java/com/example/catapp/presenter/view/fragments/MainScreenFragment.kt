@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.core.view.drawToBitmap
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -48,7 +49,7 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
     private fun setupProgressBar() {
         progressBar = binding.pbLoading
         catViewModel.getImage()
-        progressBar.visibility = View.VISIBLE
+        progressBar.isVisible = true
     }
 
     private fun setClickListener() {
@@ -58,7 +59,7 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == binding.buttonCatSearch.id) {
-            progressBar.visibility = View.VISIBLE
+            progressBar.isVisible = true
             catViewModel.getImage()
         }
         if (view.id == binding.buttonCatShare.id) {
