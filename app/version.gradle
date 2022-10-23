@@ -1,0 +1,33 @@
+ext {
+    fragmentVersion = '1.5.3'
+    navVersion = '2.5.2'
+    lifecycle_version = '2.6.0-alpha01'
+    roomVersion = "2.4.3"
+    pagingVersion = "3.1.1"
+    lottieVersion = '5.2.0'
+    retrofitVersion = "2.9.0"
+    swipeVersion = "1.1.0"
+
+    groupVersions = [
+            fragment       : "androidx.fragment:fragment-ktx:${fragmentVersion}",
+            navFragment    : "androidx.navigation:navigation-fragment-ktx:${navVersion}",
+            navigation     : "androidx.navigation:navigation-ui-ktx:${navVersion}",
+            navFragment_   : "androidx.navigation:navigation-fragment-ktx:${navVersion}",
+            viewmodel      : "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleVersion}",
+            livedata       : "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}",
+            glide          : 'com.github.bumptech.glide:glide:4.13.2',
+            implementation : "com.airbnb.android:lottie:${lottieVersion}",
+
+            retrofit       : "com.squareup.retrofit2:retrofit:${retrofit}",
+            retrofitGson   : "com.squareup.retrofit2:converter-gson:${retrofit}",
+            googleGson     : "com.google.code.gson:gson:${retrofit}",
+
+            roomRuntime    : "androidx.room:room-runtime:${roomVersion}",
+            Room           : "androidx.room:room-ktx:${roomVersion}",
+            kapt           : "androidx.room:room-compiler:${roomVersion}",
+
+            paging         : "androidx.paging:paging-runtime-ktx:$pagingVersion",
+
+            swipeRefreshLyt: "androidx.swiperefreshlayout:swiperefreshlayout:${swipeVersion}"
+    ]
+}

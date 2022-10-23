@@ -1,7 +1,6 @@
 package com.example.catapp.presenter.view.adapters
 
 import android.graphics.drawable.Drawable
-import android.view.View
 import android.widget.ProgressBar
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.isVisible
