@@ -12,7 +12,7 @@ android {
         minSdk 23
         targetSdk 32
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,7 +35,43 @@ android {
     }
 }
 
+ext {
+    groupVersions = [
+            fragmentVersion  : '1.5.3',
+            navVersion       : '2.5.2',
+            lifecycle_version: '2.6.0-alpha01',
+            roomVersion      : '2.4.3',
+            pagingVersion    : '3.1.1',
+            lottieVersion    : '5.2.0',
+            retrofitVersion  : '2.9.0',
+            swipeVersion     : '1.1.0']
+}
+
 dependencies {
+    //Fragment
+    implementation "androidx.fragment:fragment-ktx:${groupVersions.fragmentVersion}"
+    implementation "androidx.navigation:navigation-fragment-ktx:${groupVersions.navVersion}"
+    implementation "androidx.navigation:navigation-ui-ktx:${groupVersions.navVersion}"
+
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${groupVersions.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${groupVersions.lifecycleVersion}"
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation "com.airbnb.android:lottie:${groupVersions.lottieVersion}"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${groupVersions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${groupVersions.retrofit}"
+    implementation "com.google.code.gson:gson:${groupVersions.retrofit}"
+
+    //Room
+    implementation "androidx.room:room-runtime:${groupVersions.roomVersion}"
+    implementation "androidx.room:room-ktx:${groupVersions.roomVersion}"
+    kapt "androidx.room:room-compiler:${groupVersions.roomVersion}"
+
+    implementation "androidx.paging:paging-runtime-ktx:${groupVersions.pagingVersion}"
+    implementation "androidx.paging:paging-common-ktx:${groupVersions.pagingVersion}"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:${groupVersions.swipeVersion}"
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2'
@@ -48,13 +84,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.mediarouter:mediarouter:1.3.1'
-    implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
-    implementation 'androidx.paging:paging-common-ktx:3.1.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //modules
     implementation project(path: ':abstractions')
     implementation project(path: ':api')
     implementation project(path: ':database')
-
 }
