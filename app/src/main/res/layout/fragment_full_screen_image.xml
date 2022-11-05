@@ -26,9 +26,9 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="#40000000"
         app:icon="@drawable/left_arrow"
+        app:iconGravity="textEnd"
         app:iconSize="32dp"
         app:iconTint="@color/white"
-        app:iconGravity="textEnd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,6 +58,5 @@
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/back_to_list_button"
         app:layout_constraintStart_toEndOf="@+id/back_to_list_button" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
