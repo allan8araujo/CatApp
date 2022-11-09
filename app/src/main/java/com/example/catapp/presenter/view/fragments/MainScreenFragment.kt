@@ -76,6 +76,15 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
                     responseBody = responseBody
                 )
             }
+
+            catViewModel.catResponseState.observe(viewLifecycleOwner) {
+                when (it) {
+                    true -> binding.imgCat.isVisible = true
+                    false -> binding.imgCat.isVisible = false
+                    null -> binding.imgCat.isVisible = false
+                }
+            }
+
         } catch (e: Exception) {
             findNavController().navigate(R.id.to_historyFragment)
         }

@@ -27,12 +27,17 @@ import java.io.FileOutputStream
 
 class MainScreenViewModel(private val repository: Repository) : ViewModel() {
     val catResponse: MutableLiveData<ResponseBody?> = MutableLiveData()
+    var catResponseState: MutableLiveData<Boolean?> = MutableLiveData()
+
     fun getImage() {
         viewModelScope.launch {
+            catResponseState.value = null
             try {
                 val response: ResponseBody = repository.getFromApiImage()
                 catResponse.value = response
+                catResponseState.value = true
             } catch (e: Exception) {
+                catResponseState.value = false
             }
         }
     }
