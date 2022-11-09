@@ -10,11 +10,11 @@
         android:id="@+id/cat_image_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/rounded_image_style"
         tools:src="@tools:sample/avatars" />
 
     <com.google.android.material.button.MaterialButton
