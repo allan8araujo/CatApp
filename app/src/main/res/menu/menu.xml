@@ -6,7 +6,7 @@
         android:title="image" />
 
     <item
-        android:id="@+id/gifCatFragment"
+        android:id="@+id/gifScreenFragment"
         android:icon="@drawable/ic_gif_24"
         android:title="gif" />
 

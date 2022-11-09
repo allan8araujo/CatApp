@@ -21,6 +21,7 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/fullScreenImageFragment"
         android:name="com.example.catapp.presenter.view.fragments.FullScreenImageFragment"
@@ -32,6 +33,7 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.catapp.presenter.view.fragments.CatListFragment"
@@ -43,6 +45,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
+
     <fragment
         android:id="@+id/gifScreenFragment"
         android:name="com.example.catapp.presenter.view.fragments.GifScreenFragment"
