@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/imgCatFragment"
-        android:icon="@drawable/ic_dashboard_24dp"
-        android:title="image" />
+        android:icon="@drawable/ic_baseline_pets_24"
+        android:title="cat" />
 
     <item
         android:id="@+id/gifScreenFragment"
@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/historyFragment"
-        android:icon="@drawable/arrow_right"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
         android:title="history" />
 
 </menu>
