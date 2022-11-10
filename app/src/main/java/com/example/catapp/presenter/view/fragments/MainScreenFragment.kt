@@ -49,7 +49,6 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
     private fun setupProgressBar() {
         progressBar = binding.pbLoading
         catViewModel.getImage()
-        progressBar.isVisible = true
     }
 
     private fun setClickListener() {
@@ -59,7 +58,6 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == binding.buttonCatSearch.id) {
-            progressBar.isVisible = true
             catViewModel.getImage()
         }
         if (view.id == binding.buttonCatShare.id) {
@@ -72,16 +70,24 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
             catViewModel.catResponse.observe(viewLifecycleOwner) { responseBody ->
                 catViewModel.observeCatResponse(
                     binding = binding,
-                    progressBar = progressBar,
                     responseBody = responseBody
                 )
             }
 
             catViewModel.catResponseState.observe(viewLifecycleOwner) {
                 when (it) {
-                    true -> binding.imgCat.isVisible = true
-                    false -> binding.imgCat.isVisible = false
-                    null -> binding.imgCat.isVisible = false
+                    true -> {
+                        binding.imgCat.isVisible = true
+                        progressBar.isVisible = false
+                    }
+                    false -> {
+                        binding.imgCat.isVisible = false
+                        progressBar.isVisible = true
+                    }
+                    null -> {
+                        binding.imgCat.isVisible = false
+                        progressBar.isVisible = true
+                    }
                 }
             }
 

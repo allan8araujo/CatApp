@@ -12,7 +12,6 @@ import com.example.abstractions.CatPhoto
 import com.example.catapp.presenter.viewModel.MainScreenViewModel
 
 class ProgressBarListener(
-    private val progressbar: ProgressBar,
     private val catViewModel: MainScreenViewModel,
 ) :
     RequestListener<Drawable?> {
@@ -34,7 +33,6 @@ class ProgressBarListener(
         isFirstResource: Boolean,
     ): Boolean {
         getBitmapFromResource(resource)
-        progressbar.isVisible = false
         return false
     }
 

@@ -69,7 +69,6 @@ class MainScreenViewModel(private val repository: Repository) : ViewModel() {
 
     fun observeCatResponse(
         binding: FragmentCatBinding,
-        progressBar: ProgressBar,
         responseBody: ResponseBody?,
     ) {
         val responseToBitmap =
@@ -78,7 +77,7 @@ class MainScreenViewModel(private val repository: Repository) : ViewModel() {
         Glide.with(binding.root.context)
             .load(responseToBitmap)
             .centerCrop()
-            .listener(ProgressBarListener(progressBar, this))
+            .listener(ProgressBarListener(this))
             .into(binding.imgCat)
     }
 
