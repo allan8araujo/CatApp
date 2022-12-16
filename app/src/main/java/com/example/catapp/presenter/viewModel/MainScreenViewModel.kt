@@ -2,7 +2,6 @@ package com.example.catapp.presenter.viewModel
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.widget.ProgressBar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

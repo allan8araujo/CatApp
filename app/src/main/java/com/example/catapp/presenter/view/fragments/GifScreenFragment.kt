@@ -5,29 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.catapp.R
 import com.example.catapp.presenter.viewModel.GifScreenViewModel
+import com.example.catapp.presenter.viewModel.MainScreenViewModel
 
 class GifScreenFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = GifScreenFragment()
-    }
-
-    private lateinit var viewModel: GifScreenViewModel
-
+    private val gifScreenViewModel: GifScreenViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        viewModel = ViewModelProvider(this).get(GifScreenViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_gif_screen, container, false)
-    }
+        gifScreenViewModel.getGif()
+        gifScreenViewModel.catResponseGif.observe(viewLifecycleOwner){
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
+        }
+        return inflater.inflate(R.layout.fragment_gif_screen, container, false)
     }
 }
