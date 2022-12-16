@@ -23,6 +23,10 @@ Share feature to native share the photo in others apps <br> <br>
  <img src="https://user-images.githubusercontent.com/77680596/175374496-f925ea20-80e6-402a-8770-bef7c556093a.gif" width="45%"/>
 </h1>
 
+# Download 
+
+App is now available to download on [release](https://github.com/allan8araujo/CatApp/releases)
+
 # Libraries
 • [View Model overView](https://developer.android.com/topic/libraries/architecture/viewmodel#sharing)
 
