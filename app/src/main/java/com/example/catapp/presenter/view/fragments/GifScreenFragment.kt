@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
@@ -32,7 +33,6 @@ class GifScreenFragment : Fragment() {
         val view = binding.root
         gifScreenViewModel.getGif()
 
-
         gifScreenViewModel.catResponseGif.observe(viewLifecycleOwner) { responseBody ->
             val responseByteArray = responseBody?.byteStream()?.readBytes()
 
@@ -41,6 +41,27 @@ class GifScreenFragment : Fragment() {
                 .centerCrop()
 //                .listener(ProgressBarListener(this))
                 .into(binding.gifCat)
+        }
+
+        binding.buttonCatSearch.setOnClickListener {
+            gifScreenViewModel.getGif()
+        }
+
+        gifScreenViewModel.catResponseGifState.observe(viewLifecycleOwner) {
+            when (it) {
+                true -> {
+                    binding.gifCat.isVisible = true
+                    binding.pbLoading.isVisible = false
+                }
+                false -> {
+                    binding.gifCat.isVisible = false
+                    binding.pbLoading.isVisible = true
+                }
+                null -> {
+                    binding.gifCat.isVisible = false
+                    binding.pbLoading.isVisible = true
+                }
+            }
         }
 
         return view
