@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
 
-    <style name="Theme.CatApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.CatApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#55139F</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>

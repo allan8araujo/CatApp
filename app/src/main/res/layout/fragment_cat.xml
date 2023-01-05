@@ -50,13 +50,13 @@
         style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="28dp"
         android:backgroundTint="@color/custom_purple"
         app:icon="@drawable/ic_share_24"
         app:iconSize="32dp"
         app:iconTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/button_cat_search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_cat_search" />
+        app:layout_constraintStart_toEndOf="@+id/button_cat_search"
+        app:layout_constraintTop_toTopOf="@+id/button_cat_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
