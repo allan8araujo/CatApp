@@ -39,7 +39,6 @@ class GifScreenFragment : Fragment() {
             Glide.with(binding.root.context)
                 .load(responseByteArray)
                 .centerCrop()
-//                .listener(ProgressBarListener(this))
                 .into(binding.gifCat)
         }
 

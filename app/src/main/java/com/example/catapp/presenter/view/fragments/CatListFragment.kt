@@ -26,12 +26,14 @@ class CatListFragment : Fragment() {
     ): View {
         val binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val view = binding.root
+
         catListAdapter = CatItemAdapter(binding)
         catListRecycerview = binding.catListRecycerview
         setupRecyclerView(binding)
         catListAdapter.onClickListener = { imageId ->
             onClickCatList(imageId)
         }
+
         return view
     }
 
