@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.example.catapp"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0.1"
 
@@ -44,6 +44,7 @@ ext {
             pagingVersion    : '3.1.1',
             lottieVersion    : '5.2.0',
             retrofitVersion  : '2.9.0',
+            mockk            : '1.13.4',
             swipeVersion     : '1.1.0']
 }
 
@@ -52,6 +53,10 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:${groupVersions.fragmentVersion}"
     implementation "androidx.navigation:navigation-fragment-ktx:${groupVersions.navVersion}"
     implementation "androidx.navigation:navigation-ui-ktx:${groupVersions.navVersion}"
+
+    //mockk
+    testImplementation "io.mockk:mockk:${groupVersions.mockk}"
+    androidTestImplementation "io.mockk:mockk-android:${groupVersions.mockk}"
 
     //LifeCycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${groupVersions.lifecycleVersion}"
