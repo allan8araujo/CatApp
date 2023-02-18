@@ -28,7 +28,17 @@ Share feature to native share the photo in others apps <br> <br>
 App is now available to download on [release](https://github.com/allan8araujo/CatApp/releases)
 
 # Libraries
+
+• [Swipe Refresh layout](https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout?hl=pt-br)
+
+• [Glide v4.13](https://github.com/bumptech/glide)
+
+
+# Jetpack libraries
+
 • [View Model overView](https://developer.android.com/topic/libraries/architecture/viewmodel#sharing)
+
+• [Kotlin Flows on android](https://developer.android.com/kotlin/flow?hl=pt-br)
 
 • [Paging3 Library](https://developer.android.com/topic/libraries/architecture/paging/v3-overview?hl=pt-br)
 
@@ -37,9 +47,3 @@ App is now available to download on [release](https://github.com/allan8araujo/Ca
 • [Navigation Architecture Component](https://developer.android.com/guide/navigation)
 
 • [Lifecycle Architecture component](https://developer.android.com/topic/libraries/architecture/lifecycle)
-
-• [Kotlin Flows on android](https://developer.android.com/kotlin/flow?hl=pt-br)
-
-• [Swipe Refresh layout](https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout?hl=pt-br)
-
-• [Glide v4.13](https://github.com/bumptech/glide)
